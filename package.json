@@ -1,0 +1,67 @@
+{
+  "name": "@mobilabs/svg",
+  "version": "0.0.0",
+  "description": "A tiny Javascript library intended to create and manage SVG elements in the DOM",
+  "main": "index.js",
+  "bin": {},
+  "scripts": {
+    "build": "gulp build",
+    "watch": "gulp watch",
+    "makedist": "gulp makedist",
+    "test": "cross-env NODE_ENV=test nyc --reporter=lcov mocha ./test/main.js",
+    "display-coverage": "opener ./coverage/lcov-report/index.html",
+    "check-coverage": "nyc check-coverage --statements 90 --branches 80 --functions 100 --lines 90",
+    "report-coverage": "nyc report --reporter=text-lcov | coveralls",
+    "report": "nyc report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jclo/svg.git"
+  },
+  "keywords": [
+    "es6",
+    "svg",
+    "visualization",
+    "dom"
+  ],
+  "author": {
+    "name": "Mobilabs",
+    "email": "contact@mobilabs.fr",
+    "url": "http://www.mobilabs.fr"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jclo/svg/issues"
+  },
+  "homepage": "https://github.com/jclo/svg",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "4.2.0",
+    "coveralls": "3.0.6",
+    "cross-env": "5.2.0",
+    "del": "5.1.0",
+    "eslint": "6.2.2",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-plugin-import": "2.18.2",
+    "gulp": "4.0.2",
+    "gulp-concat": "2.6.1",
+    "gulp-footer": "2.0.2",
+    "gulp-header": "2.0.9",
+    "gulp-replace": "1.0.0",
+    "gulp-uglify-es": "1.0.4",
+    "husky": "3.0.4",
+    "jsdom": "15.1.1",
+    "mocha": "6.2.0",
+    "nyc": "14.1.1",
+    "opener": "1.5.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "private": false,
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run build && npm run makedist && npm run test && npm run check-coverage && npm run report"
+    }
+  }
+}

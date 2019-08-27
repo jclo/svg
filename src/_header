@@ -1,0 +1,41 @@
+// Based on ES6.lib template v0.0.3
+// ESLint declarations
+/* global define */
+/* eslint strict: ["error", "function"] */
+(function(root, factory) {
+  'use strict';
+
+  /* istanbul ignore next */
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define([''], factory);
+  } else if (typeof exports === 'object') {
+    // Node. Does not work with strict CommonJS, but
+    // only CommonJS-like environments that support module.exports,
+    // like Node.
+    module.exports = factory(root);
+    // This is a hack to attach the lib to the browser root when this lib is
+    // included inside another lib and the whole is browserifyied:
+    /* eslint-disable-next-line no-param-reassign */
+    if (root.SVG === null) root.SVG = factory(root);
+  } else {
+    // Browser globals.
+    /* eslint-disable-next-line no-param-reassign */
+    root.SVG = factory(root);
+  }
+}({{lib:parent}}, (root) => {
+  'use strict';
+
+  // This is the list of the constants that are defined at the global level of
+  // this module and are accessible to all. So, they are considered as reserved
+  // words for this library.
+  // const TSVG
+  /* eslint-disable one-var, semi-style */
+  const SVG_NS = 'http://www.w3.org/2000/svg'
+      , XLINK_NS = 'http://www.w3.org/1999/xlink'
+      ;
+
+  let SVG
+    , extend
+    ;
+  /* eslint-enable one-var, semi-style */
