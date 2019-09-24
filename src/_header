@@ -29,13 +29,13 @@
   // This is the list of the constants that are defined at the global level of
   // this module and are accessible to all. So, they are considered as reserved
   // words for this library.
-  // const TSVG
+  // const SV
   /* eslint-disable one-var, semi-style */
   const SVG_NS = 'http://www.w3.org/2000/svg'
       , XLINK_NS = 'http://www.w3.org/1999/xlink'
       ;
 
   let SVG
-    , extend
+    , _
     ;
   /* eslint-enable one-var, semi-style */

@@ -1,6 +1,6 @@
 {
   "name": "@mobilabs/svg",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A tiny Javascript library intended to create and manage SVG elements in the DOM",
   "main": "index.js",
   "bin": {},
@@ -9,8 +9,8 @@
     "watch": "gulp watch",
     "makedist": "gulp makedist",
     "test": "cross-env NODE_ENV=test nyc --reporter=lcov mocha ./test/main.js",
+    "check-coverage": "nyc check-coverage --statements 10 --branches 5 --functions 10 --lines 10",
     "display-coverage": "opener ./coverage/lcov-report/index.html",
-    "check-coverage": "nyc check-coverage --statements 90 --branches 80 --functions 100 --lines 90",
     "report-coverage": "nyc report --reporter=text-lcov | coveralls",
     "report": "nyc report"
   },
@@ -18,12 +18,7 @@
     "type": "git",
     "url": "https://github.com/jclo/svg.git"
   },
-  "keywords": [
-    "es6",
-    "svg",
-    "visualization",
-    "dom"
-  ],
+  "keywords": [],
   "author": {
     "name": "Mobilabs",
     "email": "contact@mobilabs.fr",
@@ -38,9 +33,9 @@
   "devDependencies": {
     "chai": "4.2.0",
     "coveralls": "3.0.6",
-    "cross-env": "5.2.0",
+    "cross-env": "6.0.0",
     "del": "5.1.0",
-    "eslint": "6.2.2",
+    "eslint": "6.4.0",
     "eslint-config-airbnb-base": "14.0.0",
     "eslint-plugin-import": "2.18.2",
     "gulp": "4.0.2",
@@ -49,7 +44,7 @@
     "gulp-header": "2.0.9",
     "gulp-replace": "1.0.0",
     "gulp-uglify-es": "1.0.4",
-    "husky": "3.0.4",
+    "husky": "3.0.5",
     "jsdom": "15.1.1",
     "mocha": "6.2.0",
     "nyc": "14.1.1",

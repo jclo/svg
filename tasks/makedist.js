@@ -88,10 +88,16 @@ function makeminified() {
     .pipe(dest(`${dist}/lib`));
 }
 
+// Copies the examples.
+function copyex() {
+  return src('examples/**/*')
+    .pipe(dest(`${dist}/examples`))
+  ;
+}
 
 // -- Gulp Public Task(s):
 
 module.exports = series(
   deldist,
-  parallel(doskeleton, copydev, makenoparentlib, makeminified),
+  parallel(doskeleton, copydev, makenoparentlib, makeminified, copyex),
 );

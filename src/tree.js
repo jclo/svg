@@ -16,22 +16,19 @@
 
 'use strict';
 
-const TSVG = {
-  SVGU: {
+const SV = {
+  Dollar: {
+    Public: {},
+  },
+  SVG: {
     Public: {},
   },
   Anim: {
     Public: {},
   },
-  Event: {
-    Public: {},
-  },
   Methods: {
     Static: {
       Public: {},
-      Draw: {
-        Public: {},
-      },
     },
     Attr: {
       Public: {},

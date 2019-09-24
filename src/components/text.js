@@ -10,11 +10,11 @@
  *
  *
  * Public Static Methods:
- *  . tex t                       adds a text to the selected SVG element,
+ *  . text                        adds a text to the selected SVG element,
  *
  *
  *
- * @namespace    TSVG.Methods.Text.Public
+ * @namespace    SV.Methods.Text.Public
  * @dependencies none
  * @exports      -
  * @author       -
@@ -29,11 +29,11 @@
   // IIFE
 
   // -- Module path
-  const Root = TSVG.Methods.Text.Public;
+  const Root = SV.Methods.Text.Public;
 
 
   // -- Local modules
-  const Anim = TSVG.Anim.Public
+  const Anim = SV.Anim.Public
       ;
 
   // -- Local constants
@@ -49,21 +49,21 @@
    *
    * @function (arg1, arg2)
    * @private
-   * @param {Object}        the SVG object,
+   * @param {Object}        the SVG element,
    * @param {Object}        the text or the the params for the animation,
    * @returns {}            -,
    * @since 0.0.0
    */
-  function _text(that, value) {
+  function _text(el, value) {
     switch (typeof value) {
       case 'number':
       case 'string':
         /* eslint-disable-next-line no-param-reassign */
-        that[0].textContent = value;
+        el.textContent = value;
         break;
 
       case 'object':
-        Anim.textAnimationRun(that, value);
+        Anim.textRun(el, value);
         break;
 
       default:
@@ -74,20 +74,20 @@
 
   // -- Public Static Methods ------------------------------------------------
 
-  extend(Root, {
+  _.extend(Root, {
 
     /**
      * Adds a text to the selected SVG element.
      *
      * @method (arg1, arg2)
      * @public
-     * @param {Object}      the SVG object,
+     * @param {Object}      the SVG element,
      * @param {Object}      the text or the the params for the animation,
      * @returns {}          -,
      * @since 0.0.0
      */
-    text(that, value) {
-      _text(that, value);
+    text(el, value) {
+      _text(el, value);
     },
   });
 }());

@@ -9,8 +9,7 @@ module.exports = {
   parent: 'this',
   noparent: '-noparent',
   index: './index.js',
-  // These are the Javascript files required to build the library. Choose one
-  // pattern among these ones.
+  // These are the Javascript files required to build the library.
   /* eslint-disable no-multi-spaces */
   src: [
     // These three files (_header, tree.js and extend.js) must be declared in
@@ -18,16 +17,17 @@ module.exports = {
     // the function to fill the tree!
     './src/_header',
     './src/tree.js',
-    './src/lib/extend.js',
-
-    './src/private/animation.js',
-    './src/private/attributes.js',
-    './src/private/draw.js',
-    './src/private/event.js',
-    './src/private/staticmethods.js',
-    './src/private/svgu.js',
-    './src/private/text.js',
     './src/svg.js',
+
+    // Embedded libraries:
+    './src/lib/_.js',
+
+    './src/components/$.js',
+    './src/components/anim.js',
+    './src/components/attr.js',
+    './src/components/staticmethods.js',
+    './src/components/svg.js',
+    './src/components/text.js',
 
     // This file must always be the last one as it closes the umd module.
     './src/_footer',

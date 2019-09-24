@@ -66,16 +66,14 @@ SVG provides a set of static methods. You can use by typing:
 SVG.noConflict();
 ```
 
-| Static Methods       | Description |
-|:---------------------|:------------|
-| noConflict           | returns the SVG variable to its previous owner |
-| addClass             | adds an attribute of class to the SVG element |
-| removeClass          | removes an attribute of class to the SVG element |
-| transformAttrToObj   | converts an SVG transform attributes string to an object |
-| transformAttrToStr   | converts an SVG transform attributes string to an object |
-| draw.arc             | draws an arc, |
-| draw.line            | draws polygonal lines (deprecated), |
-| draw.multipolyline   | draws a set of polylines |
+| Static Methods          | Description |
+|:------------------------|:------------|
+| noConflict              | returns the SVG variable to its previous owner |
+| transformAttrToObj      | converts an SVG transform attributes string to an object |
+| transformAttrToStr      | converts an SVG transform attributes string to an object |
+| draw.getArc             | draws an arc |
+| draw.getLine            | draws polygonal lines |
+| draw.getMultipolyline   | draws a set of polylines |
 
 
 
@@ -90,9 +88,9 @@ SVG.noConflict();
 
 | Chaining Methods  | Description |
 |:------------------|:------------|
-| select            | selects an SVG element |
 | parent            | moves to parent SVG element |
 | firstParent       | moves to the first parent |
+| select            | selects an SVG element |
 | append            | appends an SVG element and selects it |
 | appendBefore      | appends an SVG element before the reference SVG element and selects it |
 | appendAfter       | appends an SVG element after the reference SVG element and selects it |
@@ -100,7 +98,6 @@ SVG.noConflict();
 | replace           | replaces the current SVG element |
 | remove            | removes the given SVG element |
 | removeAllChilds   | removes all the children of the selected element |
-| animate           | sets animation transition parameters |
 | listen            | attaches an event listener to the SVG element |
 | listenOnce        | attaches a fired once event listener to the SVG element |
 | unlisten          | removes an event listener to the SVG element |
@@ -119,19 +116,13 @@ SVG.noConflict();
 
 | Non Chaining Methods  | Description |
 |:----------------------|:------------|
-|  createEvent          | returns 'animationOver' event, |
-|  query                | returns the first matching element or null, |
-|  getElement           | returns the selected SVG element, |
-|  getAttribute         | returns the attribute value, |
-|  getComputedStyle     | returns the style applied to this element, |
-|  getPropertyValue     | returns the value of the specified property, |
-|  getSize              | returns the width and height of this element, |
-|  getAnimationStatus   | returns the animation status w.r.t. this SVG element (deprecated), |
-|  stopAnimation        | sets isAnimationOn to false (deprecated), |
-|  getAttachedEvent     | returns the non native event attached to this SVG element, |
-|  trigger              | triggers the event attached to this SVG element, |
-|  setMessage           | attaches or set a message to this SVG element, |
-|  getMessage           | returns the message value attached to this SVG element, |
+|  query                | returns the first matching element or null |
+|  getElement           | returns the selected SVG element |
+|  getAttribute         | returns the attribute value |
+|  getComputedStyle     | returns the style applied to this element |
+|  getPropertyValue     | returns the value of the specified property |
+|  getSize              | returns the width and height of this element |
+|  getBbox              | returns the bounding boxes |
 
 
 ## License

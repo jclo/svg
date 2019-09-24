@@ -14,7 +14,7 @@
  *
  *
  *
- * @namespace    TSVG.Methods.Attr.Public
+ * @namespace    SV.Methods.Attr.Public
  * @dependencies none
  * @exports      -
  * @author       -
@@ -29,11 +29,11 @@
   // IIFE
 
   // -- Module path
-  const Root = TSVG.Methods.Attr.Public;
+  const Root = SV.Methods.Attr.Public;
 
 
   // -- Local modules
-  const Anim = TSVG.Anim.Public;
+  const Anim = SV.Anim.Public;
 
 
   // -- Local constants
@@ -49,45 +49,44 @@
    *
    * @function (arg1, arg2, arg3)
    * @private
-   * @param {Object}        the SVG object,
+   * @param {Object}        the SVG element,
    * @param {String}        the name of the attribute,
    * @param {Object}        the value of the attribute or the params for the animation,
    * @returns {}            -,
    * @since 0.0.0
    */
-  /* istanbul ignore next */
-  function _attr(that, attr, value) {
+  function _attr(el, attr, value) {
     switch (typeof value) {
       // Add the requested attribute to this element:
       case 'string':
       case 'number':
-        that[0].setAttributeNS(null, attr, value);
+        el.setAttributeNS(null, attr, value);
         break;
 
       case 'object':
         // Proceed with an animation:
         switch (attr) {
           // ...
-          case 'd':
-            Anim.dAnimationRun(that, value);
-            break;
+          // case 'd':
+          //   Anim.dAnimationRun(el, value);
+          //   break;
 
           // Transform animations:
           case 'transform':
             switch (value.type) {
               // Rotate animation:
               case 'rotate':
-                Anim.rotateAnimationRun(that, value);
+                Anim.rotateRun(el, value);
                 break;
 
               // Scale animation:
               case 'scale':
-                Anim.scaleAnimationRun(that, value);
+                Anim.scaleRun(el, value);
                 break;
 
               // Smooth linear animation:
               case 'translate':
-                Anim.translateAnimationRun(that, value);
+                Anim.translateRun(el, value);
                 break;
 
               default:
@@ -108,7 +107,7 @@
 
   // -- Public Static Methods ------------------------------------------------
 
-  extend(Root, {
+  _.extend(Root, {
 
     /**
      * Adds an attribute to the selected SVG element.
@@ -121,8 +120,8 @@
      * @returns {}          -,
      * @since 0.0.0
      */
-    attr(that, attr, value) {
-      _attr(that, attr, value);
+    attr(el, attr, value) {
+      _attr(el, attr, value);
     },
   });
 }());
