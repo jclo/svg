@@ -1,10 +1,10 @@
 ### HEAD
 
-### 0.0.2 (September 27, 2019)
+### 0.0.2 (November 13, 2019)
 
   * Added the methods $().empty, $().removeChild, $().replaceChild, $().children,
   * and $().previous, $().next,
-  * ...,
+  * Release.
 
 
 ### 0.0.1 (September 24, 2019)
