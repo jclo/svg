@@ -88,8 +88,10 @@ SVG.noConflict();
 
 | Chaining Methods  | Description |
 |:------------------|:------------|
-| parent            | moves to parent SVG element |
 | firstParent       | moves to the first parent |
+| parent            | moves to parent SVG element |
+| previous          | selects the previous sibbling element |
+| next              | selects the next sibbling element |
 | select            | selects an SVG element |
 | append            | appends an SVG element and selects it |
 | appendBefore      | appends an SVG element before the reference SVG element and selects it |
@@ -97,7 +99,10 @@ SVG.noConflict();
 | appendHTML        | appends a foreignObject to svg and selects it |
 | replace           | replaces the current SVG element |
 | remove            | removes the given SVG element |
-| removeAllChilds   | removes all the children of the selected element |
+| removeChild       | removes the passed-in child element,
+| replaceChild      | replaces a child by another,
+| removeAllChilds   | removes all the children from the selected element |
+| empty             | removeAllChilds alias |
 | listen            | attaches an event listener to the SVG element |
 | listenOnce        | attaches a fired once event listener to the SVG element |
 | unlisten          | removes an event listener to the SVG element |
@@ -118,6 +123,7 @@ SVG.noConflict();
 |:----------------------|:------------|
 |  query                | returns the first matching element or null |
 |  getElement           | returns the selected SVG element |
+| children              | returns the children HTMLCollection |
 |  getAttribute         | returns the attribute value |
 |  getComputedStyle     | returns the style applied to this element |
 |  getPropertyValue     | returns the value of the specified property |

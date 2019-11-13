@@ -23,6 +23,8 @@
  * Public Chaining Methods:
  *  . firstParent                 moves to the svg node,
  *  . parent                      moves to the parent,
+ *  . previous                    selects the previous sibbling element,
+ *  . next                        selects the next sibbling element,
  *  . select                      selects an SVG element,
  *  . append                      appends an SVG element and selects it,
  *  . appendBefore                appends a new SVG el. before the reference SVG el.,
@@ -30,7 +32,10 @@
  *  . appendHTML                  appends a foreignObject to svg and selects it,
  *  . replace                     replaces the current SVG element,
  *  . remove                      removes the given SVG element,
- *  . removeAllChilds             removes all the childs of the selected element,
+ *  . removeChild                 removes the passed-in child element,
+ *  . replaceChild                replaces a child by another,
+ *  . removeAllChilds             removes all the childs from the selected element,
+ *  . empty                       removes all the childs from the selected element
  *  . listen                      attaches an event listener to the SVG element,
  *  . listenOnce                  attaches a fired once event listener to the SVG element,
  *  . unlisten                    removes an event listener to the SVG element,
@@ -46,6 +51,7 @@
  * Public Non Chaining Methods:
  *  . query                       returns the first matching element or null,
  *  . getElement                  returns the selected SVG element,
+ *  . children                    returns the children HTMLCollection,
  *  . getAttribute                returns the attribute value,
  *  . getComputedStyle            returns the style applied to this element,
  *  . getPropertyValue            returns the value of the specified property,
@@ -137,6 +143,34 @@
       } else {
         this[0] = this[0].parentNode;
       }
+      return this;
+    };
+
+    /**
+     * Selects the previous element sibbling.
+     *
+     * @method ()
+     * @public
+     * @param {}            -,
+     * @returns {Object}    returns this,
+     * @since 0.0.0
+     */
+    const previous = function() {
+      this[0] = this[0].previousElementSibling;
+      return this;
+    };
+
+    /**
+     * Selects the next element sibbling.
+     *
+     * @method ()
+     * @public
+     * @param {}            -,
+     * @returns {Object}    returns this,
+     * @since 0.0.0
+     */
+    const next = function() {
+      this[0] = this[0].nextElementSibling;
       return this;
     };
 
@@ -264,7 +298,40 @@
     };
 
     /**
-     * Removes all the childs of the selected SVG element.
+     * Removes the passed-in child element.
+     *
+     * @method (arg1)
+     * @public
+     * @param {Object}      the child element to remove,
+     * @returns {Object}    returns this,
+     * @since 0.0.0
+     */
+    const removeChild = function(child) {
+      if (child) {
+        this[0].removeChild(child);
+      }
+      return this;
+    };
+
+    /**
+     * Replaces a child by another.
+     *
+     * @method (arg1, arg2)
+     * @public
+     * @param {Object}      the new node element,
+     * @param {Object}      the node element to replace,
+     * @returns {Object}    returns this,
+     * @since 0.0.0
+     */
+    const replaceChild = function(newChild, child) {
+      if (newChild) {
+        this[0].replaceChild(newChild, child);
+      }
+      return this;
+    };
+
+    /**
+     * Removes all the childs from the selected SVG element.
      *
      * @method ()
      * @public
@@ -273,6 +340,22 @@
      * @since 0.0.0
      */
     const removeAllChilds = function() {
+      while (this[0].firstChild) {
+        this[0].removeChild(this[0].firstChild);
+      }
+      return this;
+    };
+
+    /**
+     * Removes all the childs from the selected SVG element.
+     *
+     * @method ()
+     * @public
+     * @param {}            -,
+     * @returns {Object}    returns this,
+     * @since 0.0.0
+     */
+    const empty = function() {
       while (this[0].firstChild) {
         this[0].removeChild(this[0].firstChild);
       }
@@ -487,6 +570,19 @@
     };
 
     /**
+     * Returns the children HTMLCollection.
+     *
+     * @method ()
+     * @public
+     * @param {}            -,
+     * @returns {Object}    returns the children HTMLCollection,
+     * @since 0.0.0
+     */
+    const children = function() {
+      return this[0].children;
+    };
+
+    /**
      * Returns the attribute of the selected SVG element.
      *
      * @method (arg1)
@@ -568,6 +664,8 @@
 
       firstParent,
       parent,
+      previous,
+      next,
       select,
       append,
       appendBefore,
@@ -575,7 +673,10 @@
       appendHTML,
       replace,
       remove,
+      removeChild,
+      replaceChild,
       removeAllChilds,
+      empty,
       listen,
       listenOnce,
       unlisten,
@@ -588,6 +689,7 @@
       toggleClass,
       query,
       getElement,
+      children,
       getAttribute,
       getComputedStyle,
       getPropertyValue,
