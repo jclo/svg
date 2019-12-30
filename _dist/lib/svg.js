@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * SVG v0.0.2
+ * SVG v0.0.3
  *
  * A tiny Javascript library intended to create and manage SVG elements in the DOM.
  * (you can download it from npm or github repositories)
@@ -172,6 +172,7 @@
       const { id, _root } = S.create(selector);
       obj.id = id;
       obj._root = _root;
+      obj._SVG = SVG;
       return obj;
     };
 
@@ -302,7 +303,7 @@
 
 
     // Attaches a constant to View that provides the version of the lib.
-    SVG.VERSION = '0.0.2';
+    SVG.VERSION = '0.0.3';
   }());
   /* eslint-enable one-var, semi-style, no-underscore-dangle */
 

@@ -3,7 +3,7 @@
 ### 0.0.3 (December 30, 2019)
 
   * Added a private reference to the library and updated the dependencies,
-  * ...,
+  * Release.
 
 
 ### 0.0.2 (November 13, 2019)
