@@ -1,5 +1,11 @@
 ### HEAD
 
+### 0.0.3 (December 30, 2019)
+
+  * Added a private reference to the library and updated the dependencies,
+  * ...,
+
+
 ### 0.0.2 (November 13, 2019)
 
   * Added the methods $().empty, $().removeChild, $().replaceChild, $().children,
