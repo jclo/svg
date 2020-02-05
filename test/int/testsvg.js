@@ -1,15 +1,14 @@
 /* global describe, it */
 /* eslint  one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
 
-'use strict';
 
 // -- Node modules
 const { expect } = require('chai')
     ;
 
+
 // -- Local modules
-const SVG = require('../../index.js')
-    ;
+
 
 // -- Local constants
 
@@ -18,7 +17,7 @@ const SVG = require('../../index.js')
 
 
 // -- Main
-module.exports = function() {
+module.exports = function(SVG) {
   describe('Test SVG:', () => {
     it('Expects SVG.VERSION to return a string.', () => {
       expect(SVG.VERSION).to.be.a('string');
@@ -34,6 +33,10 @@ module.exports = function() {
 
     it('Expects SVG.noConflit() to return a function.', () => {
       expect(SVG.noConflict()).to.be.a('function');
+    });
+
+    it('Expects SVG() to return an object.', () => {
+      expect(SVG()).to.be.an('object');
     });
   });
 

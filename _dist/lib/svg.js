@@ -1,14 +1,13 @@
 /*! ****************************************************************************
- * SVG v0.0.3
+ * SVG v0.0.4
  *
  * A tiny Javascript library intended to create and manage SVG elements in the DOM.
  * (you can download it from npm or github repositories)
- * Copyright (c) 2019 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr).
+ * Copyright (c) 2020 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr).
  * Released under the MIT license. You may obtain a copy of the License
  * at: http://www.opensource.org/licenses/mit-license.php).
+ * Built from ES6Pakket v0.0.1-alpha.1.
  * ************************************************************************** */
-// Based on ES6.lib template v0.0.3
-// ESLint declarations
 /* global define */
 /* eslint strict: ["error", "function"] */
 (function(root, factory) {
@@ -23,127 +22,68 @@
     // only CommonJS-like environments that support module.exports,
     // like Node.
     module.exports = factory(root);
-    // This is a hack to attach the lib to the browser root when this lib is
-    // included inside another lib and the whole is browserifyied:
-    /* eslint-disable-next-line no-param-reassign */
-    if (root.SVG === null) root.SVG = factory(root);
   } else {
     // Browser globals.
     /* eslint-disable-next-line no-param-reassign */
     root.SVG = factory(root);
   }
-}(this, (root) => {
-  'use strict';
+/* eslint-disable-next-line */
+}(this,(root)=>{"use strict";return function(){/* istanbul ignore next */function e(t,n,o){function r(f){function i(e){const n=t[f][2][e];return r(n||e)}if(!n[f]){if(!t[f]){throw new Error(`Cannot find module "${f}"`)}n[f]={exports:{}};const r=n[f];t[f][1].call(r.exports,i,r,r.exports,e,t,n,o)}return n[f].exports}for(let e=0;e<o.length;e++){r(o[e])}return r}return e}()({
 
-  // This is the list of the constants that are defined at the global level of
-  // this module and are accessible to all. So, they are considered as reserved
-  // words for this library.
-  // const SV
-  /* eslint-disable one-var, semi-style */
-  const SVG_NS = 'http://www.w3.org/2000/svg'
-      , XLINK_NS = 'http://www.w3.org/1999/xlink'
-      ;
-
-  let SVG
-    , _
-    ;
-  /* eslint-enable one-var, semi-style */
-
-  /* ***************************************************************************
-   *
-   * Tree is an internal object that links all the internal modules.
-   *
-   * tree.js is just a literal object that contains a set of functions. It
-   * can't be intantiated.
-   *
-   *
-   * @namespace SVG
-   * @exports   -
-   * @author    -
-   * @since     0.0.0
-   * @version   -
-   * ************************************************************************ */
-  /* - */
-
-  const SV = {
-    Dollar: {
-      Public: {},
-    },
-    SVG: {
-      Public: {},
-    },
-    Anim: {
-      Public: {},
-    },
-    Methods: {
-      Static: {
-        Public: {},
-      },
-      Attr: {
-        Public: {},
-      },
-      Text: {
-        Public: {},
-      },
-    },
-  };
-  /* - */
+  /* eslint-disable-next-line no-unused-vars */
+  1: ['./src/svg', function(impoort, module, exports) {
+    /** ****************************************************************************
+     *
+     * Defines the SVG object.
+     *
+     * svg.js is built upon the Prototypal Instantiation pattern. It
+     * returns an object by calling its constructor. It doesn't use the new
+     * keyword.
+     *
+     * Private Functions:
+     *  . none,
+     *
+     *
+     * Constructor:
+     *  . SVG                         creates the SVG object,
+     *
+     *
+     * Private Static Methods:
+     *  . _setTestMode                returns the internal objects for testing purpose,
+     *
+     *
+     * Public Static Methods:
+     *  . noConflict                  returns a reference to this SVG object,
+     *  . transformAttrToObj          converts a SVG transform attributes string to an object,
+     *  . transformAttrToStr          converts a SVG transform attributes object to a string,
+     *  . getArc                      returns an arc path,
+     *  . getLine                     draws polygonal lines,
+     *  . getMultipolyline            returns polyline paths,
+     *
+     *
+     * Public Methods:
+     *  . none yet,
+     *
+     *
+     *
+     * @namespace    SVG.src.svg
+     * @dependencies none
+     * @exports      -
+     * @author       -
+     * @since        0.0.0
+     * @version      -
+     * ************************************************************************** */
+    /* - */
+    /* eslint-disable one-var, semi-style, no-underscore-dangle */
 
 
-  /* ***************************************************************************
-   *
-   * Defines the SVG object.
-   *
-   * svg.js is built upon the Prototypal Instantiation pattern. It
-   * returns an object by calling its constructor. It doesn't use the new
-   * keyword.
-   *
-   * Private Functions:
-   *  . none,
-   *
-   *
-   * Constructor:
-   *  . SVG                         creates the SVG object,
-   *
-   *
-   * Private Static Methods:
-   *  . _setTestMode                returns the internal objects for testing purpose,
-   *
-   *
-   * Public Static Methods:
-   *  . noConflict                  returns a reference to this SVG object,
-   *  . transformAttrToObj          converts a SVG transform attributes string to an object,
-   *  . transformAttrToStr          converts a SVG transform attributes object to a string,
-   *  . getArc                      returns an arc path,
-   *  . getLine                     draws polygonal lines,
-   *  . getMultipolyline            returns polyline paths,
-   *
-   *
-   * Public Methods:
-   *  . none yet,
-   *
-   *
-   *
-   * @namespace    SVG
-   * @dependencies none
-   * @exports      -
-   * @author       -
-   * @since        0.0.0
-   * @version      -
-   * ************************************************************************ */
-  /* eslint-disable one-var, semi-style, no-underscore-dangle */
-
-  (function() {
-    // IIFE
-
-    // -- Module path
+    // -- Vendor modules
 
 
     // -- Local modules
-    const $ = SV.Dollar.Public
-        , S = SV.SVG.Public
-        , SM = SV.Methods.Static.Public
-        ;
+    const $ = impoort('./components/dollar');
+    const S = impoort('./components/svg');
+    const SM = impoort('./components/staticmethods');
 
 
     // -- Local constants
@@ -156,19 +96,20 @@
     let methods;
 
 
-    // -- Public
+    // -- Public -------------------------------------------------------------------
 
     /**
      * Creates the SVG object.
      *
      * @constructor (arg1)
      * @public
-     * @param {String}        the selector id or class,
-     * @returns {Object}      returns the SVG object,
+     * @param {String}          the selector id or class,
+     * @returns {Object}        returns the SVG object,
      * @since 0.0.0
      */
-    SVG = function(selector) {
-      const obj = Object.create(_.extend(methods, $));
+    const SVG = function(selector) {
+      const obj = Object.create(methods);
+      obj.$ = $;
       const { id, _root } = S.create(selector);
       obj.id = id;
       obj._root = _root;
@@ -177,21 +118,23 @@
     };
 
 
-    // -- Private & Public Static Methods --------------------------------------
-
+    // -- Private Static Methods ---------------------------------------------------
 
     /**
      * Returns the internal objects for testing purpose.
      *
      * @method ()
      * @private
-     * @param {}            -,
-     * @returns {Object}    returns TV tree,
+     * @param {}                -,
+     * @returns {Object}        returns TV tree,
      * @since 0.0.0
      */
     SVG._setTestMode = function() {
-      return SV;
+      return {};
     };
+
+
+    // -- Public Static Methods ----------------------------------------------------
 
     /**
      * Returns a reference to this SVG object.
@@ -202,8 +145,8 @@
      *
      * @method ()
      * @public
-     * @param {}            -,
-     * @returns {Object}    returns the SVG object,
+     * @param {}                -,
+     * @returns {Object}        returns the SVG object,
      * @since 0.0.0
      */
     SVG.noConflict = function() {
@@ -217,8 +160,8 @@
      *
      * @method (arg1)
      * @public
-     * @param {String}        the SVG transform atributes string,
-     * @returns {Object}      returns the transform attributes,
+     * @param {String}          the SVG transform atributes string,
+     * @returns {Object}        returns the transform attributes,
      * @since 0.0.0
      */
     SVG.transformAttrToObj = function(transform) {
@@ -230,8 +173,8 @@
      *
      * @method (arg1)
      * @public
-     * @param {String}        the SVG transform atributes string,
-     * @returns {Object}      returns the transform attributes,
+     * @param {String}          the SVG transform atributes string,
+     * @returns {Object}        returns the transform attributes,
      * @since 0.0.0
      */
     SVG.transformAttrToStr = function(tr) {
@@ -246,11 +189,11 @@
      *
      * @method (arg1, arg2, arg3, arg4)
      * @public
-     * @param {Number}        start angle in radius,
-     * @param {Number}        Stop angle,
-     * @param {Number}        external radius,
-     * @param {Number}        internal radius,
-     * @returns {String}      returns the SVG path,
+     * @param {Number}          start angle in radius,
+     * @param {Number}          stop angle,
+     * @param {Number}          external radius,
+     * @param {Number}          internal radius,
+     * @returns {String}        returns the SVG path,
      * @since 0.0.0
      */
     SVG.getArc = function(startAngle, stopAngle, outerRadius, innerRadius) {
@@ -265,9 +208,9 @@
      *
      * @method (arg1, arg2)
      * @public
-     * @param {Object}        a set of points (x, y) defining the polygonal line,
-     * @param {Boolean}       true if it is a polygon (closed path),
-     * @returns {String}      returns the SVG path,
+     * @param {Object}          a set of points (x, y) defining the polygonal line,
+     * @param {Boolean}         true if it is a polygon (closed path),
+     * @returns {String}        returns the SVG path,
      * @since 0.0.0
      */
     SVG.getLine = function(shape, closed) {
@@ -284,10 +227,10 @@
      *
      * @method (arg1, arg2)
      * @public
-     * @param {Object}        a set of array of points (x, y) defining
-     *                        the polygonal line,
-     * @param {Boolean}       true if it is a polygon (closed path),
-     * @returns {String}      returns the SVG path,
+     * @param {Object}          a set of array of points (x, y) defining
+     *                          the polygonal line,
+     * @param {Boolean}         true if it is a polygon (closed path),
+     * @returns {String}        returns the SVG path,
      * @since 0.0.0
      */
     SVG.getMultipolyline = function(shape, closed) {
@@ -295,7 +238,7 @@
     };
 
 
-    // -- Public Methods -------------------------------------------------------
+    // -- Public Methods -----------------------------------------------------------
 
     methods = {
       // none yet!
@@ -303,55 +246,99 @@
 
 
     // Attaches a constant to View that provides the version of the lib.
-    SVG.VERSION = '0.0.3';
-  }());
-  /* eslint-enable one-var, semi-style, no-underscore-dangle */
+    SVG.VERSION = '0.0.4';
 
 
-  /* ***************************************************************************
-   *
-   * Provides a subset of the overslash library.
-   *
-   * _.js is just a literal object that contains a set of functions. It
-   * can't be intantiated.
-   *
-   * Private Functions:
-   *  . none,
-   *
-   *
-   * Public Static Methods:
-   *  . extend                      extends the passed-in object with new methods,
-   *
-   *  . isUndefined                 is a given variable undefined?
-   *  . isNull                      is a given value null?
-   *  . isBoolean                   is a given value a boolean?
-   *  . isString                    is a given value a string?
-   *  . isNumber                    is a given value a number?
-   *  . isObject                    is a given variable an object?
-   *  . isLiteralObject             is a given variable a literal object?
-   *  . isFunction                  is a given variable a function?
-   *  . isArray                     is a given value an array?
-   *
-   *  . linear                      linear easing method,
-   *
-   *
-   *
-   * @namespace    -
-   * @dependencies none
-   * @exports      -
-   * @author       -
-   * @since        0.0.0
-   * @version      -
-   * ************************************************************************ */
-  /* - */
+    // -- Export
+    /* eslint-disable-next-line no-param-reassign */
+    module.exports = SVG;
 
-  (function() {
-    // IIFE
+    /* eslint-enable one-var, semi-style, no-underscore-dangle */
 
-    // -- Module path
+  /* eslint-disable-next-line */
+  }, { './components/dollar': 2, './components/svg': 3, './components/staticmethods': 4 }],
+
+  /* eslint-disable-next-line no-unused-vars */
+  2: ['./src/components/dollar', function(impoort, module, exports) {
+    /** ****************************************************************************
+     *
+     * Implements the methods to manipulate the DOM.
+     *
+     * $.js is just an object that contains a set of methods. It implements the
+     * pattern factory. Thus, $(sel) returns the selected node and the methods
+     * listed below.
+     *
+     * Private Functions:
+     *  . none,
+     *
+     *
+     * Private Variables:
+     *  . id                          the id of the svg node,
+     *  . [0]                         the selected svg children,
+     *  . _root                       the svg node,
+     *
+     *
+     * Constructor:
+     *  . $                           creates the component,
+     *
+     *
+     * Public Chaining Methods:
+     *  . firstParent                 moves to the svg node,
+     *  . parent                      moves to the parent,
+     *  . previous                    selects the previous sibbling element,
+     *  . next                        selects the next sibbling element,
+     *  . select                      selects an SVG element,
+     *  . append                      appends an SVG element and selects it,
+     *  . appendBefore                appends a new SVG el. before the reference SVG el.,
+     *  . appendAfter                 appends a new SVG el. after the reference SVG el.,
+     *  . appendHTML                  appends a foreignObject to svg and selects it,
+     *  . replace                     replaces the current SVG element,
+     *  . remove                      removes the given SVG element,
+     *  . removeChild                 removes the passed-in child element,
+     *  . replaceChild                replaces a child by another,
+     *  . removeAllChilds             removes all the childs from the selected element,
+     *  . empty                       removes all the childs from the selected element
+     *  . listen                      attaches an event listener to the SVG element,
+     *  . listenOnce                  attaches a fired once event listener to the SVG element,
+     *  . unlisten                    removes an event listener to the SVG element,
+     *  . alink                       adds a link attribute to the SVG selected element,
+     *  . attr                        adds attributes to the selected SVG element,
+     *  . rmattr                      removes the given attribute from the selected SVG element,
+     *  . text                        adds text to the selected SVG element,
+     *  . addClass                    adds a class value to the selected SVG element,
+     *  . removeClass                 removes a class value to the selected SVG element,
+     *  . toggleClass                 toggles a class value to the selected SVG element,
+     *
+     *
+     * Public Non Chaining Methods:
+     *  . query                       returns the first matching element or null,
+     *  . getElement                  returns the selected SVG element,
+     *  . children                    returns the children HTMLCollection,
+     *  . getAttribute                returns the attribute value,
+     *  . getComputedStyle            returns the style applied to this element,
+     *  . getPropertyValue            returns the value of the specified property,
+     *  . getSize                     returns the width and height of this element,
+     *  . getBbox                     returns the bounding boxes,
+     *
+     *
+     *
+     * @namespace    SVG.src.components.dollar
+     * @dependencies none
+     * @exports      -
+     * @author       -
+     * @since        0.0.0
+     * @version      -
+     * ************************************************************************** */
+    /* eslint-disable one-var, semi-style, no-underscore-dangle */
+
+
+    // -- Vendor modules
 
 
     // -- Local modules
+    const Attr = impoort('./attr');
+    const Text = impoort('./text');
+    const w3c = impoort('./w3c');
 
 
     // -- Local constants
@@ -360,270 +347,15 @@
     // -- Local variables
 
 
-    // -- Public Methods -------------------------------------------------------
-
-    _ = {
-
-      /**
-       * Extends the passed-in object with new methods.
-       *
-       * Nota: this function mutates object.
-       *
-       * @function (arg1, arg2)
-       * @private
-       * @param {Object}      the object to extend,
-       * @param {Object}      an object containing a set of methods,
-       * @returns {}          -,
-       * @since 0.0.0
-       */
-      extend(object, methods) {
-        const keys = Object.keys(methods);
-        for (let i = 0; i < keys.length; i++) {
-          /* eslint-disable-next-line no-param-reassign */
-          object[keys[i]] = methods[keys[i]];
-        }
-        return object;
-      },
-
-      /**
-       * Is a given variable undefined?
-       *
-       * @method (arg1)
-       * @public
-       * @param {Object}      the object to test,
-       * @returns {Boolean}   returns true or false,
-       * @since 0.0.0
-       */
-      isUndefined(obj) {
-        return obj === undefined;
-      },
-
-      /**
-       * Is a given value null?
-       *
-       * @method (arg1)
-       * @public
-       * @param {Object}      the object to test,
-       * @returns {Boolean}   returns true or false,
-       * @since 0.0.0
-       */
-      isNull(obj) {
-        return obj === null;
-      },
-
-      /**
-       * Is a given value a boolean?
-       *
-       * @method (arg1)
-       * @public
-       * @param {Object}      the object to test,
-       * @returns {Boolean}   returns true or false,
-       * @since 0.0.0
-       */
-      isBoolean(obj) {
-        return obj === true || obj === false || Object.prototype.toString.call(obj) === '[object Boolean]';
-      },
-
-      /**
-       * Is a given value a string?
-       *
-       * @method (arg1)
-       * @public
-       * @param {Object}      the object to test,
-       * @returns {Boolean}   returns true or false,
-       * @since 0.0.0
-       */
-      isString(obj) {
-        return Object.prototype.toString.call(obj) === '[object String]';
-      },
-
-      /**
-       * Is a given value a number?
-       *
-       * @method (arg1)
-       * @public
-       * @param {Object}      the object to test,
-       * @returns {Boolean}   returns true or false,
-       * @since 0.0.0
-       */
-      isNumber(obj) {
-        return Object.prototype.toString.call(obj) === '[object Number]';
-      },
-
-      /**
-       * Is a given variable an object?
-       * (copied from: http://underscorejs.org)
-       *
-       * @method (arg1)
-       * @public
-       * @param {Object}      the object to test,
-       * @returns {Boolean}   returns true or false,
-       * @since 0.0.0
-       */
-      isObject(obj) {
-        const type = typeof obj;
-        return (type === 'function' || type === 'object') && !!obj;
-      },
-
-      /**
-       * Is a given variable a literal object?
-       *
-       * @method (arg1)
-       * @private
-       * @param {Object}      the object to test,
-       * @returns {Boolean}   returns true or false,
-       * @since 0.0.3
-       */
-      isLiteralObject(obj) {
-        return Object.prototype.toString.call(obj) === '[object Object]';
-      },
-
-      /**
-       * Is a given variable a function?
-       *
-       * @method (arg1)
-       * @public
-       * @param {Object}      the object to test,
-       * @returns {Boolean}   returns true or false,
-       * @since 0.0.0
-       */
-      isFunction(obj) {
-        return Object.prototype.toString.call(obj) === '[object Function]';
-      },
-
-      /**
-       * Is a given value an array?
-       * (Delegates to ECMA5's native Array.isArray.)
-       * (copied from: http://underscorejs.org)
-       *
-       * @method (arg1)
-       * @public
-       * @param {Object}      the object to test,
-       * @returns {Boolean}   returns true or false,
-       * @since 0.0.0
-       */
-      isArray(obj) {
-        return Object.prototype.toString.call(obj) === '[object Array]';
-      },
-
-      /**
-       * Computes the intermediate values according to a linear progression.
-       *
-       * @method (arg1, arg2, arg3, arg4)
-       * @public
-       * @param {Number}      the current time,
-       * @param {Number}      the beginning value,
-       * @param {Number}      the change in value,
-       * @param {Number}      the duration,
-       * @returns {Number}    returns the computed value,
-       */
-      elinear(t, b, c, d) {
-        return (c * t) / d + b;
-      },
-    };
-  }());
-  /* - */
-
-
-  /* ***************************************************************************
-   *
-   * Implements the methods to manipulate the DOM.
-   *
-   * $.js is just an object that contains a set of methods. It implements the
-   * pattern factory. Thus, $(sel) returns the selected node and the methods
-   * listed below.
-   *
-   * Private Functions:
-   *  . none,
-   *
-   *
-   * Private Variables:
-   *  . id                          the id of the svg node,
-   *  . [0]                         the selected svg children,
-   *  . _root                       the svg node,
-   *
-   *
-   * Constructor:
-   *  . $                           creates the component,
-   *
-   *
-   * Public Chaining Methods:
-   *  . firstParent                 moves to the svg node,
-   *  . parent                      moves to the parent,
-   *  . previous                    selects the previous sibbling element,
-   *  . next                        selects the next sibbling element,
-   *  . select                      selects an SVG element,
-   *  . append                      appends an SVG element and selects it,
-   *  . appendBefore                appends a new SVG el. before the reference SVG el.,
-   *  . appendAfter                 appends a new SVG el. after the reference SVG el.,
-   *  . appendHTML                  appends a foreignObject to svg and selects it,
-   *  . replace                     replaces the current SVG element,
-   *  . remove                      removes the given SVG element,
-   *  . removeChild                 removes the passed-in child element,
-   *  . replaceChild                replaces a child by another,
-   *  . removeAllChilds             removes all the childs from the selected element,
-   *  . empty                       removes all the childs from the selected element
-   *  . listen                      attaches an event listener to the SVG element,
-   *  . listenOnce                  attaches a fired once event listener to the SVG element,
-   *  . unlisten                    removes an event listener to the SVG element,
-   *  . alink                       adds a link attribute to the SVG selected element,
-   *  . attr                        adds attributes to the selected SVG element,
-   *  . rmattr                      removes the given attribute from the selected SVG element,
-   *  . text                        adds text to the selected SVG element,
-   *  . addClass                    adds a class value to the selected SVG element,
-   *  . removeClass                 removes a class value to the selected SVG element,
-   *  . toggleClass                 toggles a class value to the selected SVG element,
-   *
-   *
-   * Public Non Chaining Methods:
-   *  . query                       returns the first matching element or null,
-   *  . getElement                  returns the selected SVG element,
-   *  . children                    returns the children HTMLCollection,
-   *  . getAttribute                returns the attribute value,
-   *  . getComputedStyle            returns the style applied to this element,
-   *  . getPropertyValue            returns the value of the specified property,
-   *  . getSize                     returns the width and height of this element,
-   *  . getBbox                     returns the bounding boxes,
-   *
-   *
-   *
-   * @namespace    SV.Dollar.Public
-   * @dependencies none
-   * @exports      -
-   * @author       -
-   * @since        0.0.0
-   * @version      -
-   * ************************************************************************ */
-  /* eslint-disable one-var, semi-style, no-underscore-dangle */
-
-  (function() {
-    // IIFE
-
-    // -- Module path
-    const Root = SV.Dollar.Public;
-
-
-    // -- Local modules
-    const Attr = SV.Methods.Attr.Public
-        , Text = SV.Methods.Text.Public
-        ;
-
-
-    // -- Local constants
-
-
-    // -- Local variables
-
-
-    // -- Public ---------------------------------------------------------------
+    // -- Public -------------------------------------------------------------------
 
     /**
      * Select a child element.
      *
      * @constructor (arg1)
      * @public
-     * @param {String}        the selector,
-     * @returns {Object}      returns the $() object,
+     * @param {String}          the selector,
+     * @returns {Object}        returns the $() object,
      * @since 0.0.0
      */
     function $(selector) {
@@ -632,15 +364,15 @@
           ; // unique id!
 
 
-      // -- Public Chaining Methods --------------------------------------------
+      // -- Public Chaining Methods ------------------------------------------------
 
       /**
        * Returns to the root parent if defined.
        *
        * @method ()
        * @public
-       * @param {}            -,
-       * @returns {Object}    returns this,
+       * @param {}              -,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const firstParent = function() {
@@ -655,8 +387,8 @@
        *
        * @method ()
        * @public
-       * @param {}            -,
-       * @returns {Object}    returns this,
+       * @param {}              -,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const parent = function() {
@@ -676,8 +408,8 @@
        *
        * @method ()
        * @public
-       * @param {}            -,
-       * @returns {Object}    returns this,
+       * @param {}              -,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const previous = function() {
@@ -690,8 +422,8 @@
        *
        * @method ()
        * @public
-       * @param {}            -,
-       * @returns {Object}    returns this,
+       * @param {}              -,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const next = function() {
@@ -704,9 +436,9 @@
        *
        * @method (arg1, arg2)
        * @public
-       * @param {Object}      the SVG element to select,
-       * @param {Boolean}     'true' if selected element should become the 'root',
-       * @returns {Object}    returns this,
+       * @param {Object}        the SVG element to select,
+       * @param {Boolean}       'true' if selected element should become the 'root',
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const select = function(element) {
@@ -719,12 +451,12 @@
        *
        * @method (arg1)
        * @public
-       * @param {Object}      the SVG element to add,
-       * @returns {Object}    returns this,
+       * @param {Object}        the SVG element to add,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const append = function(svgElement) {
-        const el = document.createElementNS(SVG_NS, svgElement);
+        const el = document.createElementNS(w3c.SVG_NS, svgElement);
         this[0] = this[0].appendChild(el);
         return this;
       };
@@ -734,13 +466,13 @@
        *
        * @method (arg1, arg2)
        * @public
-       * @param {Object}      the SVG element to add,
-       * @param {Object}      the reference SVG element,
-       * @returns {Object}    returns this,
+       * @param {Object}        the SVG element to add,
+       * @param {Object}        the reference SVG element,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const appendBefore = function(newSvgElement, svgElement) {
-        const newChild = document.createElementNS(SVG_NS, newSvgElement)
+        const newChild = document.createElementNS(w3c.SVG_NS, newSvgElement)
             , child = this[0].querySelector(svgElement)
             ;
 
@@ -754,13 +486,13 @@
        *
        * @method (arg1, arg2)
        * @public
-       * @param {Object}      the SVG element to add,
-       * @param {Object}      the reference SVG element,
-       * @returns {Object}    returns this,
+       * @param {Object}        the SVG element to add,
+       * @param {Object}        the reference SVG element,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const appendAfter = function(newSvgElement, svgElement) {
-        const newChild = document.createElementNS(SVG_NS, newSvgElement)
+        const newChild = document.createElementNS(w3c.SVG_NS, newSvgElement)
             , child = this[0].querySelector(svgElement).nextElementSibling
             ;
 
@@ -774,8 +506,8 @@
        *
        * @method (arg1)
        * @public
-       * @param {String}      the serialized html block,
-       * @returns {Object}    returns this,
+       * @param {String}        the serialized html block,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const appendHTML = function(xmlString) {
@@ -792,12 +524,12 @@
        *
        * @method (arg1)
        * @public
-       * @param {Object}      the new SVG element,
-       * @returns {Object}    returns this,
+       * @param {Object}        the new SVG element,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const replace = function(svgElement) {
-        const el = document.createElementNS(SVG_NS, svgElement);
+        const el = document.createElementNS(w3c.SVG_NS, svgElement);
         this[0].parentNode.replaceChild(el, this[0]);
         this[0] = el;
         return this;
@@ -808,8 +540,8 @@
        *
        * @method ()
        * @public
-       * @param {}            -,
-       * @returns {Object}    returns this,
+       * @param {}              -,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const remove = function() {
@@ -827,8 +559,8 @@
        *
        * @method (arg1)
        * @public
-       * @param {Object}      the child element to remove,
-       * @returns {Object}    returns this,
+       * @param {Object}        the child element to remove,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const removeChild = function(child) {
@@ -843,9 +575,9 @@
        *
        * @method (arg1, arg2)
        * @public
-       * @param {Object}      the new node element,
-       * @param {Object}      the node element to replace,
-       * @returns {Object}    returns this,
+       * @param {Object}        the new node element,
+       * @param {Object}        the node element to replace,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const replaceChild = function(newChild, child) {
@@ -860,8 +592,8 @@
        *
        * @method ()
        * @public
-       * @param {}            -,
-       * @returns {Object}    returns this,
+       * @param {}              -,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const removeAllChilds = function() {
@@ -876,8 +608,8 @@
        *
        * @method ()
        * @public
-       * @param {}            -,
-       * @returns {Object}    returns this,
+       * @param {}              -,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const empty = function() {
@@ -892,9 +624,9 @@
        *
        * @method (arg1, arg2)
        * @public
-       * @param {String}      the 'event',
-       * @param {Object}      the handler,
-       * @returns {Object}    returns this,
+       * @param {String}        the 'event',
+       * @param {Object}        the handler,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const listen = function(event, handler) {
@@ -909,9 +641,9 @@
        *
        * @method (arg1, arg2)
        * @public
-       * @param {String}      the 'event',
-       * @param {Object}      the handler,
-       * @returns {Object}    returns this,
+       * @param {String}        the 'event',
+       * @param {Object}        the handler,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const listenOnce = function(event, handler) {
@@ -931,9 +663,9 @@
        *
        * @method (arg1, arg2)
        * @public
-       * @param {String}    the 'event',
-       * @param {Object}    the handler,
-       * @returns {Object}  returns this,
+       * @param {String}        the 'event',
+       * @param {Object}        the handler,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const unlisten = function(event, handler) {
@@ -948,14 +680,14 @@
        *
        * @method (arg1, arg2)
        * @public
-       * @param {String}      the type of link attribute,
-       * @param {String}      the url,
-       * @returns {Object}    returns this,
+       * @param {String}        the type of link attribute,
+       * @param {String}        the url,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const alink = function(attr, url) {
         // this[0].setAttributeNS(XLINK_NS, 'xlink:' + attr, url);
-        this[0].setAttributeNS(XLINK_NS, `xlink:${attr}`, url);
+        this[0].setAttributeNS(w3c.XLINK_NS, `xlink:${attr}`, url);
         return this;
       };
 
@@ -964,9 +696,9 @@
        *
        * @method (arg1, arg2)
        * @public
-       * @param {String}      the name of the attribute,
-       * @param {Object}      the value of the attribute or the params for the animation,
-       * @returns {Object}    returns this,
+       * @param {String}        the name of the attribute,
+       * @param {Object}        the value of the attribute or the params for the animation,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const attr = function(attribute, value) {
@@ -984,8 +716,8 @@
        *
        * @method (arg1)
        * @public
-       * @param {String}      the attribute to remove,
-       * @returns {Object}    returns this,
+       * @param {String}        the attribute to remove,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const rmattr = function(attribute) {
@@ -998,8 +730,8 @@
        *
        * @method (arg1)
        * @public
-       * @param {Object}      the text or the the params for the animation,
-       * @returns {Object}    returns this,
+       * @param {Object}        the text or the the params for the animation,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const text = function(value) {
@@ -1012,8 +744,8 @@
        *
        * @method (arg1)
        * @public
-       * @param {String}      the value of the class attribute,
-       * @returns {Object}    returns this,
+       * @param {String}        the value of the class attribute,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const addClass = function(className) {
@@ -1029,8 +761,8 @@
        *
        * @method (arg1)
        * @public
-       * @param {String}      the value of the class attribute,
-       * @returns {Object}    returns this,
+       * @param {String}        the value of the class attribute,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const removeClass = function(className) {
@@ -1050,8 +782,8 @@
        *
        * @method (arg1)
        * @public
-       * @param {String}      the value of the class attribute,
-       * @returns {Object}    returns this,
+       * @param {String}        the value of the class attribute,
+       * @returns {Object}      returns this,
        * @since 0.0.0
        */
       const toggleClass = function(className) {
@@ -1066,15 +798,15 @@
       };
 
 
-      // -- Public Non Chaining Methods ----------------------------------------
+      // -- Public Non Chaining Methods --------------------------------------------
 
       /**
        * Returns the first element that matches or null.
        *
        * @method (arg1)
        * @public
-       * @param {String}      the css selector,
-       * @returns {Object}    the selected SVG element or null,
+       * @param {String}        the css selector,
+       * @returns {Object}      the selected SVG element or null,
        * @since 0.0.0
        */
       const query = function(css) {
@@ -1086,8 +818,8 @@
        *
        * @method ()
        * @public
-       * @param {}            -,
-       * @returns {Object}    the selected SVG element,
+       * @param {}              -,
+       * @returns {Object}      the selected SVG element,
        * @since 0.0.0
        */
       const getElement = function() {
@@ -1099,8 +831,8 @@
        *
        * @method ()
        * @public
-       * @param {}            -,
-       * @returns {Object}    returns the children HTMLCollection,
+       * @param {}              -,
+       * @returns {Object}      returns the children HTMLCollection,
        * @since 0.0.0
        */
       const children = function() {
@@ -1112,8 +844,8 @@
        *
        * @method (arg1)
        * @public
-       * @param {String}      the name of the attribute,
-       * @returns {Object}    returns the attribute value or null,
+       * @param {String}        the name of the attribute,
+       * @returns {Object}      returns the attribute value or null,
        * @since 0.0.0
        */
       const getAttribute = function(attribute) {
@@ -1126,7 +858,7 @@
        * @method ()
        * @public
        * @param {}   -
-       * @returns {Object}    returns the object computed style,
+       * @returns {Object}      returns the object computed style,
        * @since 0.0.0
        */
       const getComputedStyle = function() {
@@ -1138,12 +870,13 @@
        *
        * @method (arg1)
        * @public
-       * @param {Object}      the style property,
-       * @returns {String}    returns the style value,
+       * @param {Object}        the style property,
+       * @returns {String}      returns the style value,
        * @since 0.0.0
        */
       const getPropertyValue = function(css) {
-        return this.getPropertyValue(css);
+        const o = window.getComputedStyle(this[0]);
+        return o.getPropertyValue(css);
       };
 
       /**
@@ -1151,8 +884,8 @@
        *
        * @method ()
        * @public
-       * @param {}            -
-       * @returns {Object}    returns the width and height of the SVG element,
+       * @param {}              -
+       * @returns {Object}      returns the width and height of the SVG element,
        * @since 0.0.0
        */
       const getSize = function() {
@@ -1167,8 +900,8 @@
        *
        * @method ()
        * @public
-       * @param {}            -
-       * @returns {Object}    returns the width and height of the SVG element,
+       * @param {}              -
+       * @returns {Object}      returns the width and height of the SVG element,
        * @since 0.0.0
        */
       const getBbox = function() {
@@ -1224,51 +957,48 @@
     }
 
 
-    // Exports $.
-    _.extend(Root, { $ });
-  }());
-  /* eslint-enable one-var, semi-style, no-underscore-dangle */
+    // Export
+    /* eslint-disable-next-line no-param-reassign */
+    module.exports = $;
+
+    /* eslint-enable one-var, semi-style, no-underscore-dangle */
+
+  /* eslint-disable-next-line */
+  }, { './attr': 5, './text': 6, './w3c': 7 }],
+
+  /* eslint-disable-next-line no-unused-vars */
+  3: ['./src/components/svg', function(impoort, module, exports) {
+    /** ****************************************************************************
+     *
+     * Creates the SVG node.
+     *
+     * svg.js is just a literal object that contains a set of functions. It
+     * can't be intantiated.
+     *
+     * Private Functions:
+     *  . _create                     creates the SVG node,
+     *
+     *
+     * Public Static Methods:
+     *  . create                      creates the SVG node,
+     *
+     *
+     *
+     * @namespace    SVG.components.svg
+     * @dependencies none
+     * @exports      -
+     * @author       -
+     * @since        0.0.0
+     * @version      -
+     * ************************************************************************** */
+    /* eslint-disable one-var, semi-style, no-underscore-dangle */
 
 
-  /* ***************************************************************************
-   *
-   * Performs the animations.
-   *
-   * animation.js is just a literal object that contains a set of functions. It
-   * can't be intantiated.
-   *
-   * Private Functions:
-   *  . _rotateRun                  rotates the SVG element,
-   *  . _scaleRun                   scales the SVG element,
-   *  . _translateRun               translates the SVG element,
-   *  . _textRun                    updates the text value from initial to final value,
-   *
-   *
-   * Public Static Methods:
-   *  . rotateRun                   rotates the SVG element,
-   *  . scaleRun                    scales the SVG element,
-   *  . translateRun                translates the SVG element,
-   *  . textRun                     updates the text value from initial to final value,
-   *
-   *
-   *
-   * @namespace    SV.Anim.Public
-   * @dependencies none
-   * @exports      -
-   * @author       -
-   * @since        0.0.0
-   * @version      -
-   * ************************************************************************ */
-  /* eslint-disable one-var, semi-style, no-underscore-dangle */
-
-  (function() {
-    // IIFE
-
-    // -- Module path
-    const Root = SV.Anim.Public;
+    // -- Vendor modules
 
 
     // -- Local modules
+    const w3c = impoort('./w3c');
 
 
     // -- Local constants
@@ -1277,493 +1007,111 @@
     // -- Local variables
 
 
-    // -- Private Functions ----------------------------------------------------
+    // -- Private Methods ----------------------------------------------------------
 
     /**
-     * Rotates the SVG element.
+     * Creates the SVG node.
      *
-     * Nota:
-     * The animation object must contain the following properties:
-     * {
-     *   start: the value (if omitted, start from current position),
-     *   stop: the final value,
-     *   duration: the elapsed time,
-     *   frequency: the refresh frequency (in pulse per second),
-     *   easing: the easing formula,
-     * }
-     *
-     * @function (arg1, arg2)
+     * @function (arg1)
      * @private
-     * @param {Object}        the SVG element,
-     * @param {Object}        the rotation to perform,
-     * @returns {}            -,
+     * @param {String}          the id or class selector,
+     * @returns {String}        returns the unique id of the svg node,
      * @since 0.0.0
      */
-    function _rotateRun(el, anim) {
-      const r = {
-        a: 0,
-        t: 0,
-        start: _.isNumber(anim.start) ? anim.start : null,
-        stop: _.isNumber(anim.stop) ? anim.stop : 180,
-        period: _.isNumber(anim.frequency) ? 1000 / anim.frequency : 10,
-        easing: _.isFunction(anim.easing) ? anim.easing : _.elinear,
-        duration: _.isNumber(anim.duration) ? anim.duration : 2000,
-      };
+    function _create(selector) {
+      const sel = typeof selector === 'string' ? selector : 'body'
+          , el = document.querySelector(sel)
+          , node = el || document.querySelector('body')
+          ;
 
-      // If anim.start is undefined, we start from the current value:
-      if (_.isNull(r.start)) {
-        const transform = SVG.transformAttrToObj(el.getAttribute('transform'));
-        r.start = _.isObject(transform.scale) && _.isNumber(transform.scale.a)
-          ? transform.scale.a
-          : 180;
-      }
+      let _root;
+      // create a unique id:
+      let id = `i${Math.random().toString(36).substr(2, 7)}`;
 
-      const timer = setInterval(() => {
-        // Compute the next step:
-        r.t += r.period;
-        // Abort if overflow or if no change in the position.
-        if (r.t > r.duration || r.stop === r.start) { r.t = r.duration; }
-        r.a = r.easing(r.t, r.start, (r.stop - r.start), r.duration);
-
-        // Retrieve transform attributes, set new rotation value and update.
-        const transform = SVG.transformAttrToObj(el.getAttribute('transform'));
-        transform.rotate.a = r.a;
-        el.setAttributeNS(null, 'transform', SVG.transformAttrToStr(transform));
-
-        if (r.t === r.duration) {
-          clearInterval(timer);
-        }
-      }, r.period);
-    }
-
-    /**
-     * Scales the SVG element.
-     *
-     * Nota:
-     * The animation object must contain the following properties:
-     * {
-     *   start: the initial x, y values (if omitted, start from current position),
-     *   stop: the final x, y values,
-     *   duration: the elapsed time,
-     *   frequency: the refresh frequency (in pulse per second),
-     *   easing: the easing formula,
-     * }
-     *
-     * @function (arg1, arg2)
-     * @private
-     * @param {Object}        the SVG object,
-     * @param {Object}        the scaling to perform,
-     * @returns {}            -,
-     * @since 0.0.0
-     */
-    function _scaleRun(el, anim) {
-      const s = {
-        x: 0,
-        y: 0,
-        t: 0,
-        x0: _.isObject(anim.start) && _.isNumber(anim.start.x) ? anim.start.x : null,
-        y0: _.isObject(anim.start) && _.isNumber(anim.start.y) ? anim.start.y : null,
-        x1: _.isObject(anim.stop) && _.isNumber(anim.stop.x) ? anim.stop.x : 1,
-        y1: _.isObject(anim.stop) && _.isNumber(anim.stop.y) ? anim.stop.y : 1,
-        period: _.isNumber(anim.frequency) ? 1000 / anim.frequency : 10,
-        easing: _.isFunction(anim.easing) ? anim.easing : _.elinear,
-        duration: _.isNumber(anim.duration) ? anim.duration : 2000,
-      };
-
-      // if anim.start.x or anim.start.y is undefined, the scaling operation
-      // starts from the current value:
-      const transform = SVG.transformAttrToObj(el.getAttribute('transform'));
-      if (_.isNull(s.x0) || _.isNull(s.y0)) {
-        s.x0 = _.isObject(transform.scale) && _.isNumber(transform.scale.x)
-          ? transform.scale.x
-          : 0;
-        s.y0 = _.isObject(transform.scale) && _.isNumber(transform.scale.y)
-          ? transform.scale.y
-          : 0;
-      }
-
-      // Run:
-      const timer = setInterval(() => {
-        // Compute the next step:
-        s.t += s.period;
-        if (s.t > s.duration) { s.t = s.duration; }
-        s.x = s.easing(s.t, s.x0, (s.x1 - s.x0), s.duration);
-        s.y = s.easing(s.t, s.y0, (s.y1 - s.y0), s.duration);
-
-        // Retrieve transform attributes, set new scale value and update.
-        const tr = SVG.transformAttrToObj(el.getAttribute('transform'));
-        tr.scale.x = s.x;
-        tr.scale.y = s.y;
-        el.setAttributeNS(null, 'transform', SVG.transformAttrToStr(tr));
-
-        if (s.t === s.duration) {
-          clearInterval(timer);
-        }
-      }, s.period);
-    }
-
-    /**
-     * Translates the SVG element.
-     *
-     * Nota:
-     * The animation object must contain the following properties:
-     * {
-     *   start: the initial x, y values (if omitted, start from current position),
-     *   stop: the final x, y values,
-     *   duration: the elapsed time,
-     *   frequency: the refresh frequency (in pulse per second),
-     *   easing: the easing formula,
-     * }
-     *
-     * @function (arg1, arg2)
-     * @private
-     * @param {Object}        the SVG element,
-     * @param {Object}        the translation to perform,
-     * @returns {}            -,
-     * @since 0.0.0
-     */
-    function _translateRun(el, anim) {
-      const v = {
-        x: 0,
-        y: 0,
-        t: 0,
-        length: null,
-        arc: null,
-        period: _.isNumber(anim.frequency) ? 1000 / anim.frequency : 10,
-        easing: _.isFunction(anim.easing) ? anim.easing : _.elinear,
-        duration: _.isNumber(anim.duration) ? anim.duration : 2000,
-      };
-
-      let x0
-        , y0
-        ;
-
-      // Translate starts from the passed-in value or the current position:
-      if (anim.start && _.isNumber(anim.start.x) && _.isNumber(anim.start.y)) {
-        x0 = anim.start.x;
-        y0 = anim.start.y;
+      // Check that the svg node doesn't exist:
+      const isSVG = node.getElementsByTagNameNS(w3c.SVG_NS, 'svg')[0];
+      if (!isSVG || isSVG.length === 0) {
+        // Ok, it doesn't exist, we can create it:
+        const svg = document.createElementNS(w3c.SVG_NS, 'svg');
+        svg.setAttributeNS(null, 'id', id);
+        svg.setAttributeNS(null, 'version', '1.1');
+        svg.setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns', w3c.SVG_NS);
+        svg.setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns:xlink', w3c.XLINK_NS);
+        node.appendChild(svg);
+        _root = svg;
       } else {
-        const transform = SVG.transformAttrToObj(el.getAttribute('transform'));
-        x0 = _.isObject(transform.translate) && _.isNumber(transform.translate.x)
-          ? transform.translate.x
-          : 0;
-        y0 = _.isObject(transform.translate) && _.isNumber(transform.translate.y)
-          ? transform.translate.x
-          : 0;
+        // It already exists, do not overwrite it!
+        id = isSVG.getAttributeNS(null, 'id');
+        _root = isSVG;
       }
-
-      /* eslint-disable-next-line no-restricted-properties */
-      v.length = Math.sqrt(Math.pow((anim.stop.x - x0), 2) + Math.pow((anim.stop.y - y0), 2));
-      v.arc = Math.atan((anim.stop.y - y0) / (anim.stop.x - x0));
-      if (anim.stop.x - x0 < 0) v.arc += -Math.PI;
-      if (v.length === 0) v.arc = 0;
-
-      const timer = setInterval(() => {
-        // Compute the next step:
-        v.t += v.period;
-        if (v.t > v.duration) v.t = v.duration;
-        v.x = (v.easing(v.t, 0, v.length, v.duration) * Math.cos(v.arc)) + x0;
-        v.y = (v.easing(v.t, 0, v.length, v.duration) * Math.sin(v.arc)) + y0;
-
-        // Retrieve the transform attributes, set the new position value and update:
-        const trform = SVG.transformAttrToObj(el.getAttribute('transform'));
-        trform.translate.x = v.x;
-        trform.translate.y = v.y;
-        el.setAttributeNS(null, 'transform', SVG.transformAttrToStr(trform));
-
-        // Stop the timer if destination point reached.
-        if (v.t === v.duration) {
-          clearInterval(timer);
-        }
-      }, v.period);
-    }
-
-    /**
-     * Updates dynamically the text value from the initial to the final value.
-     *
-     * Nota:
-     * The animation object must contain the following properties:
-     * {
-     *   start: the initial value,
-     *   stop: the final value,
-     *   duration: the elapsed time,
-     *   frequency: the refresh frequency (in pulse per second),
-     *   easing: the easing formula,
-     * }
-     *
-     * @function (arg1, arg2)
-     * @private
-     * @param {Object}        the SVG object,
-     * @param {Object}        the animation parameters,
-     * @returns {}            -,
-     * @since 0.0.0
-     */
-    function _textRun(el, anim) {
-      const d = {
-        period: _.isNumber(anim.frequency) ? 1000 / anim.frequency : 10,
-        easing: _.isFunction(anim.easing) ? anim.easing : _.elinear,
-        value: 0,
-        start: _.isNumber(anim.start) ? anim.start : 0,
-        stop: _.isNumber(anim.stop) ? anim.stop : 0,
-        t: 0,
-        duration: _.isNumber(anim.duration) ? anim.duration : 2000,
-      };
-
-      // Run:
-      const timer = setInterval(() => {
-        // Compute the next step:
-        d.t += d.period;
-        // Abort if overflow or if no change in the position.
-        if (d.t > d.duration || d.stop === d.start) {
-          d.t = d.duration;
-        }
-        d.value = d.easing(d.t, d.start, (d.stop - d.start), d.duration);
-        if (d.duration === 0) {
-          d.value = d.start;
-        }
-
-        // Display the new digit value:
-        /* eslint-disable-next-line no-param-reassign */
-        el.textContent = d.value.toFixed(0);
-
-        // is animation over?
-        if (d.t === d.duration) {
-          clearInterval(timer);
-        }
-      }, d.period);
+      return { id, _root };
     }
 
 
-    // -- Public Static Methods ------------------------------------------------
+    // -- Public Static Methods ----------------------------------------------------
 
-    _.extend(Root, {
-
-      /**
-       * Rotates the SVG element.
-       *
-       * @method (arg1, arg2)
-       * @public
-       * @param {Object}      the SVG element,
-       * @param {Object}      the rotation to perform,
-       * @returns {}          -,
-       * @since 0.0.0
-       */
-      rotateRun(el, anim) {
-        _rotateRun(el, anim);
-      },
+    const SV = {
 
       /**
-       * Scales the SVG element;
+       * Creates the SVG node.
        *
-       * @method (arg1, arg2)
+       * @method (arg1)
        * @public
-       * @param {Object}      the SVG element,
-       * @param {Object}      the scaling to perform,
-       * @returns {}          -,
+       * @param {String}        the id or class selector,
+       * @returns {String}      returns the unique id of the svg node,
        * @since 0.0.0
        */
-      scaleRun(el, anim) {
-        _scaleRun(el, anim);
+      create(selector) {
+        return _create(selector);
       },
+    };
 
-      /**
-       * Translates the SVG Element.
-       *
-       * @method (arg1, arg2)
-       * @public
-       * @param {Object}      the SVG element,
-       * @param {Object}      the translation to perform,
-       * @returns {}          -,
-       * @since 0.0.0
-       */
-      translateRun(el, anim) {
-        _translateRun(el, anim);
-      },
+    // Export
+    /* eslint-disable-next-line no-param-reassign */
+    module.exports = SV;
 
-      /**
-       * Updates dynamically the text value from the initial to the final value.
-       *
-       * @method (arg1, arg2)
-       * @public
-       * @param {Object}      the SVG element,
-       * @param {Object}      the animation parameters,
-       * @returns {}          -,
-       * @since 0.0.0
-       */
-      textRun(el, anim) {
-        _textRun(el, anim);
-      },
-    });
-  }());
-  /* eslint-enable one-var, semi-style, no-underscore-dangle */
+    /* eslint-enable one-var, semi-style, no-underscore-dangle */
 
+  /* eslint-disable-next-line */
+  }, { './w3c': 7 }],
 
-  /* ***************************************************************************
-   *
-   * Adds or Updates the SVG node attributes.
-   *
-   * attributes.js is just a literal object that contains a set of functions. It
-   * can't be intantiated.
-   *
-   * Private Functions:
-   *  . _attr                       adds an attribute to the selected SVG element,
-   *
-   *
-   * Public Static Methods:
-   *  . attr                        adds an attribute to the selected SVG element,
-   *
-   *
-   *
-   * @namespace    SV.Methods.Attr.Public
-   * @dependencies none
-   * @exports      -
-   * @author       -
-   * @since        0.0.0
-   * @version      -
-   * ************************************************************************ */
-  /* eslint-disable no-underscore-dangle */
-
-  (function() {
-    // IIFE
-
-    // -- Module path
-    const Root = SV.Methods.Attr.Public;
-
-
-    // -- Local modules
-    const Anim = SV.Anim.Public;
-
-
-    // -- Local constants
-
-
-    // -- Local variables
-
-
-    // -- Private Functions ----------------------------------------------------
-
-    /**
-     * Adds an attribute to the selected SVG element.
+  /* eslint-disable-next-line no-unused-vars */
+  4: ['./src/components/staticmethods', function(impoort, module, exports) {
+    /** ****************************************************************************
      *
-     * @function (arg1, arg2, arg3)
-     * @private
-     * @param {Object}        the SVG element,
-     * @param {String}        the name of the attribute,
-     * @param {Object}        the value of the attribute or the params for the animation,
-     * @returns {}            -,
-     * @since 0.0.0
-     */
-    function _attr(el, attr, value) {
-      switch (typeof value) {
-        // Add the requested attribute to this element:
-        case 'string':
-        case 'number':
-          el.setAttributeNS(null, attr, value);
-          break;
-
-        case 'object':
-          // Proceed with an animation:
-          switch (attr) {
-            // ...
-            // case 'd':
-            //   Anim.dAnimationRun(el, value);
-            //   break;
-
-            // Transform animations:
-            case 'transform':
-              switch (value.type) {
-                // Rotate animation:
-                case 'rotate':
-                  Anim.rotateRun(el, value);
-                  break;
-
-                // Scale animation:
-                case 'scale':
-                  Anim.scaleRun(el, value);
-                  break;
-
-                // Smooth linear animation:
-                case 'translate':
-                  Anim.translateRun(el, value);
-                  break;
-
-                default:
-                  throw new Error(`The animation is not supported for the transform ${value.type}!`);
-              }
-              break;
-
-            default:
-              throw new Error(`The animation is not supported for the attribute ${attr}!`);
-          }
-          break;
-
-        default:
-          // Ignore!
-      }
-    }
+     * Implements the SVG static methods.
+     *
+     * staticmethods.js is just a literal object that contains a set of functions.
+     * it can't be intantiated.
+     *
+     * Private Functions:
+     *  . _transformAttrToObj         converts a SVG transform from string to object,
+     *  . _transformAttrToStr         converts a SVG transform from object to string,
+     *  . _getArc                     returns an arc path,
+     *  . _getLine                    returns a polyline path,
+     *  . _getMultipolyline           returns a set of polyline paths,
+     *
+     *
+     * Public Static Methods:
+     *  . transformAttrToObj          converts a SVG transform from string to object,
+     *  . transformAttrToStr          converts a SVG transform from object to string,
+     *  . getArc                      returns an arc path,
+     *  . getLine                     draws polygonal lines,
+     *  . getMultipolyline            returns polyline paths,
+     *
+     *
+     *
+     * @namespace    SVG.src.components.staticmethods
+     * @dependencies none
+     * @exports      -
+     * @author       -
+     * @since        0.0.0
+     * @version      -
+     * ************************************************************************** */
+    /* eslint-disable one-var, semi-style, no-underscore-dangle */
 
 
-    // -- Public Static Methods ------------------------------------------------
-
-    _.extend(Root, {
-
-      /**
-       * Adds an attribute to the selected SVG element.
-       *
-       * @method (arg1, arg2, arg3)
-       * @public
-       * @param {Object}      the SVG object,
-       * @param {String}      the name of the attribute,
-       * @param {Object}      the value of the attribute or the params for the animation,
-       * @returns {}          -,
-       * @since 0.0.0
-       */
-      attr(el, attr, value) {
-        _attr(el, attr, value);
-      },
-    });
-  }());
-  /* eslint-enable no-underscore-dangle */
-
-
-  /* ***************************************************************************
-   *
-   * Implements the SVG static methods.
-   *
-   * staticmethods.js is just a literal object that contains a set of functions.
-   * it can't be intantiated.
-   *
-   * Private Functions:
-   *  . _transformAttrToObj         converts a SVG transform from string to object,
-   *  . _transformAttrToStr         converts a SVG transform from object to string,
-   *  . _getArc                     returns an arc path,
-   *  . _getLine                    returns a polyline path,
-   *  . _getMultipolyline           returns a set of polyline paths,
-   *
-   *
-   * Public Static Methods:
-   *  . transformAttrToObj          converts a SVG transform from string to object,
-   *  . transformAttrToStr          converts a SVG transform from object to string,
-   *  . getArc                      returns an arc path,
-   *  . getLine                     draws polygonal lines,
-   *  . getMultipolyline            returns polyline paths,
-   *
-   *
-   *
-   * @namespace    SV.Methods.Static.Public
-   * @dependencies none
-   * @exports      -
-   * @author       -
-   * @since        0.0.0
-   * @version      -
-   * ************************************************************************ */
-  /* eslint-disable one-var, semi-style, no-underscore-dangle */
-
-  (function() {
-    // IIFE
-
-    // -- Module path
-    const Root = SV.Methods.Static.Public;
+    // -- Vendor modules
 
 
     // -- Local modules
@@ -1775,15 +1123,15 @@
     // -- Local variables
 
 
-    // -- Private Functions ----------------------------------------------------
+    // -- Private Functions --------------------------------------------------------
 
     /**
      * Converts a SVG transform attributes string to an object.
      *
      * @function (arg1)
      * @private
-     * @param {String}        the SVG transform atributes string,
-     * @returns {Object}      returns the transform attributes,
+     * @param {String}          the SVG transform atributes string,
+     * @returns {Object}        returns the transform attributes,
      * @since 0.0.0
      */
     /* eslint-disable one-var-declaration-per-line */
@@ -1911,8 +1259,8 @@
      *
      * @function (arg1)
      * @private
-     * @param {String}        the SVG transform atributes string,
-     * @returns {Object}      returns the transform attributes,
+     * @param {String}          the SVG transform atributes string,
+     * @returns {Object}        returns the transform attributes,
      * @since 0.0.0
      */
     /* eslint-disable prefer-template */
@@ -1978,11 +1326,11 @@
      *
      * @function (arg1, arg2, arg3, arg4)
      * @private
-     * @param {Number}      start angle in radius,
-     * @param {Number}      Stop angle,
-     * @param {Number}      external radius,
-     * @param {Number}      internal radius,
-     * @returns {String}    returns the SVG path,
+     * @param {Number}          start angle in radius,
+     * @param {Number}          stop angle,
+     * @param {Number}          external radius,
+     * @param {Number}          internal radius,
+     * @returns {String}        returns the SVG path,
      * @since 0.0.0
      */
     /* eslint-disable no-param-reassign, operator-assignment, vars-on-top */
@@ -2020,9 +1368,9 @@
      *
      * @function (arg1, arg2)
      * @private
-     * @param {Object}        a set of points (x, y) defining the polygonal line,
-     * @param {Boolean}       true if it is a polygon (closed path),
-     * @returns {String}      returns the SVG path,
+     * @param {Object}          a set of points (x, y) defining the polygonal line,
+     * @param {Boolean}         true if it is a polygon (closed path),
+     * @returns {String}        returns the SVG path,
      * @since 0.0.0
      */
     function _getLine(shape, closed) {
@@ -2052,10 +1400,10 @@
      *
      * @function (arg1, arg2)
      * @private
-     * @param {Object}        a set of array of points (x, y) defining
-     *                        the polygonal line,
-     * @param {Boolean}       true if it is a polygon (closed path),
-     * @returns {String}      returns the SVG path,
+     * @param {Object}          a set of array of points (x, y) defining
+     *                          the polygonal line,
+     * @param {Boolean}         true if it is a polygon (closed path),
+     * @returns {String}        returns the SVG path,
      * @since 0.0.0
      */
     function _getMultipolyline(shape, closed) {
@@ -2086,17 +1434,17 @@
     }
 
 
-    // -- Public Methods -------------------------------------------------------
+    // -- Public Methods -----------------------------------------------------------
 
-    _.extend(Root, {
+    const Static = {
 
       /**
        * Converts a SVG transform attributes string to an object.
        *
        * @method (arg1)
        * @public
-       * @param {String}      the SVG transform atributes string,
-       * @returns {Object}    returns the transform attributes,
+       * @param {String}        the SVG transform atributes string,
+       * @returns {Object}      returns the transform attributes,
        * @since 0.0.0
        */
       transformAttrToObj(transform) {
@@ -2108,8 +1456,8 @@
        *
        * @method (arg1)
        * @public
-       * @param {String}      the SVG transform atributes string,
-       * @returns {Object}    returns the transform attributes,
+       * @param {String}        the SVG transform atributes string,
+       * @returns {Object}      returns the transform attributes,
        * @since 0.0.0
        */
       transformAttrToStr(tr) {
@@ -2121,11 +1469,11 @@
        *
        * @method (arg1, arg2, arg3, arg4)
        * @public
-       * @param {Number}      start angle in radius,
-       * @param {Number}      Stop angle,
-       * @param {Number}      external radius,
-       * @param {Number}      internal radius,
-       * @returns {String}    returns the SVG path,
+       * @param {Number}        start angle in radius,
+       * @param {Number}        stop angle,
+       * @param {Number}        external radius,
+       * @param {Number}        internal radius,
+       * @returns {String}      returns the SVG path,
        * @since 0.0.0
        */
       getArc(startAngle, stopAngle, outerRadius, innerRadius) {
@@ -2137,9 +1485,9 @@
        *
        * @method (arg1, arg2)
        * @public
-       * @param {Object}      a set of points (x, y) defining the polygonal line,
-       * @param {Boolean}     true if it is a polygon (closed path),
-       * @returns {String}    returns the SVG path,
+       * @param {Object}        a set of points (x, y) defining the polygonal line,
+       * @param {Boolean}       true if it is a polygon (closed path),
+       * @returns {String}      returns the SVG path,
        * @since 0.0.0
        */
       getLine(shape, closed) {
@@ -2151,53 +1499,58 @@
        *
        * @method (arg1, arg2)
        * @public
-       * @param {Object}      a set of array of points (x, y) defining
-       *                      the polygonal line,
-       * @param {Boolean}     true if it is a polygon (closed path),
-       * @returns {String}    returns the SVG path,
+       * @param {Object}        a set of array of points (x, y) defining
+       *                        the polygonal line,
+       * @param {Boolean}       true if it is a polygon (closed path),
+       * @returns {String}      returns the SVG path,
        * @since 0.0.0
        */
       getMultipolyline(shape, closed) {
         return _getMultipolyline(shape, closed);
       },
-    });
-  }());
-  /* eslint-enable one-var, semi-style, no-underscore-dangle */
+    };
 
 
-  /* ***************************************************************************
-   *
-   * Creates the SVG node.
-   *
-   * svg.js is just a literal object that contains a set of functions. It
-   * can't be intantiated.
-   *
-   * Private Functions:
-   *  . _create                     creates the SVG node,
-   *
-   *
-   * Public Static Methods:
-   *  . create                      creates the SVG node,
-   *
-   *
-   *
-   * @namespace    SV.SVG.Public
-   * @dependencies none
-   * @exports      -
-   * @author       -
-   * @since        0.0.0
-   * @version      -
-   * ************************************************************************ */
-  /* eslint-disable one-var, semi-style, no-underscore-dangle */
+    // Export
+    /* eslint-disable-next-line no-param-reassign */
+    module.exports = Static;
 
-  (function() {
-    // IIFE
+    /* eslint-enable one-var, semi-style, no-underscore-dangle */
+  }, {}],
 
-    // -- Module path
-    const Root = SV.SVG.Public;
+  /* eslint-disable-next-line no-unused-vars */
+  5: ['./src/components/attr', function(impoort, module, exports) {
+    /** ****************************************************************************
+     *
+     * Adds or Updates the SVG node attributes.
+     *
+     * attributes.js is just a literal object that contains a set of functions. It
+     * can't be intantiated.
+     *
+     * Private Functions:
+     *  . _attr                       adds an attribute to the selected SVG element,
+     *
+     *
+     * Public Static Methods:
+     *  . attr                        adds an attribute to the selected SVG element,
+     *
+     *
+     *
+     * @namespace    SVG.src.components.attr
+     * @dependencies none
+     * @exports      -
+     * @author       -
+     * @since        0.0.0
+     * @version      -
+     * ************************************************************************** */
+    /* eslint-disable no-underscore-dangle */
+
+
+    // -- Vendor modules
 
 
     // -- Local modules
+    const Anim = impoort('./anim');
 
 
     // -- Local constants
@@ -2206,103 +1559,133 @@
     // -- Local variables
 
 
-    // -- Private Methods ------------------------------------------------------
+    // -- Private Functions --------------------------------------------------------
 
     /**
-     * Creates the SVG node.
+     * Adds an attribute to the selected SVG element.
      *
-     * @function (arg1)
+     * @function (arg1, arg2, arg3)
      * @private
-     * @param {String}      the id or class selector,
-     * @returns {String}    returns the unique id of the svg node,
+     * @param {Object}          the SVG element,
+     * @param {String}          the name of the attribute,
+     * @param {Object}          the value of the attribute or the params for the animation,
+     * @returns {}              -,
      * @since 0.0.0
      */
-    function _create(selector) {
-      const sel = typeof selector === 'string' ? selector : 'body'
-          , el = document.querySelector(sel)
-          , node = el || document.querySelector('body')
-          ;
+    function _attr(el, attr, value) {
+      switch (typeof value) {
+        // Add the requested attribute to this element:
+        case 'string':
+        case 'number':
+          el.setAttributeNS(null, attr, value);
+          break;
 
-      let _root;
-      // create a unique id:
-      let id = `i${Math.random().toString(36).substr(2, 7)}`;
+        case 'object':
+          // Proceed with an animation:
+          switch (attr) {
+            // ...
+            // case 'd':
+            //   Anim.dAnimationRun(el, value);
+            //   break;
 
-      // Check that the svg node doesn't exist:
-      const isSVG = node.getElementsByTagNameNS(SVG_NS, 'svg')[0];
-      if (!isSVG || isSVG.length === 0) {
-        // Ok, it doesn't exist, we can create it:
-        const svg = document.createElementNS(SVG_NS, 'svg');
-        svg.setAttributeNS(null, 'id', id);
-        svg.setAttributeNS(null, 'version', '1.1');
-        svg.setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns', SVG_NS);
-        svg.setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns:xlink', XLINK_NS);
-        node.appendChild(svg);
-        _root = svg;
-      } else {
-        // It already exists, do not overwrite it!
-        id = isSVG.getAttributeNS(null, 'id');
-        _root = isSVG;
+            // Transform animations:
+            case 'transform':
+              switch (value.type) {
+                // Rotate animation:
+                case 'rotate':
+                  Anim.rotateRun(el, value);
+                  break;
+
+                // Scale animation:
+                case 'scale':
+                  Anim.scaleRun(el, value);
+                  break;
+
+                // Smooth linear animation:
+                case 'translate':
+                  Anim.translateRun(el, value);
+                  break;
+
+                default:
+                  throw new Error(`The animation is not supported for the transform ${value.type}!`);
+              }
+              break;
+
+            default:
+              throw new Error(`The animation is not supported for the attribute ${attr}!`);
+          }
+          break;
+
+        default:
+          // Ignore!
       }
-      return { id, _root };
     }
 
 
-    // -- Public Static Methods ------------------------------------------------
+    // -- Public Static Methods ----------------------------------------------------
 
-    _.extend(Root, {
+    const Attr = {
 
       /**
-       * Creates the SVG node.
+       * Adds an attribute to the selected SVG element.
        *
-       * @method (arg1)
+       * @method (arg1, arg2, arg3)
        * @public
-       * @param {String}      the id or class selector,
-       * @returns {String}    returns the unique id of the svg node,
+       * @param {Object}        the SVG object,
+       * @param {String}        the name of the attribute,
+       * @param {Object}        the value of the attribute or the params for the animation,
+       * @returns {}            -,
        * @since 0.0.0
        */
-      create(selector) {
-        return _create(selector);
+      attr(el, attr, value) {
+        _attr(el, attr, value);
       },
-    });
-  }());
-  /* eslint-enable one-var, semi-style, no-underscore-dangle */
+    };
 
 
-  /* ***************************************************************************
-   *
-   * Implements the text methods.
-   *
-   * text.js is just a literal object that contains a set of functions. It
-   * can't be intantiated.
-   *
-   * Private Functions:
-   *  . _text                       adds a text to the selected SVG element,
-   *
-   *
-   * Public Static Methods:
-   *  . text                        adds a text to the selected SVG element,
-   *
-   *
-   *
-   * @namespace    SV.Methods.Text.Public
-   * @dependencies none
-   * @exports      -
-   * @author       -
-   * @since        0.0.0
-   * @version      -
-   * ************************************************************************ */
-  /* eslint-disable one-var, semi-style, no-underscore-dangle */
+    // -- Export
+    /* eslint-disable-next-line no-param-reassign */
+    module.exports = Attr;
 
-  (function() {
-    // IIFE
+    /* eslint-enable no-underscore-dangle */
 
-    // -- Module path
-    const Root = SV.Methods.Text.Public;
+  /* eslint-disable-next-line */
+  }, { './anim': 8 }],
+
+  /* eslint-disable-next-line no-unused-vars */
+  6: ['./src/components/text', function(impoort, module, exports) {
+    /** ****************************************************************************
+     *
+     * Implements the text methods.
+     *
+     * text.js is just a literal object that contains a set of functions. It
+     * can't be intantiated.
+     *
+     * Private Functions:
+     *  . _text                       adds a text to the selected SVG element,
+     *
+     *
+     * Public Static Methods:
+     *  . text                        adds a text to the selected SVG element,
+     *
+     *
+     *
+     * @namespace    SVG.src.components.text
+     * @dependencies none
+     * @exports      -
+     * @author       -
+     * @since        0.0.0
+     * @version      -
+     * ************************************************************************** */
+    /* eslint-disable one-var, semi-style, no-underscore-dangle */
+
+
+    // -- Vendor modules
 
 
     // -- Local modules
-    const Anim = SV.Anim.Public
-        ;
+    const Anim = impoort('./anim');
+
 
     // -- Local constants
 
@@ -2310,7 +1693,7 @@
     // -- Local variables
 
 
-    // -- Private Functions ----------------------------------------------------
+    // -- Private Functions --------------------------------------------------------
 
     /**
      * Adds a text to the selected SVG element.
@@ -2340,9 +1723,9 @@
     }
 
 
-    // -- Public Static Methods ------------------------------------------------
+    // -- Public Static Methods ----------------------------------------------------
 
-    _.extend(Root, {
+    const Text = {
 
       /**
        * Adds a text to the selected SVG element.
@@ -2357,11 +1740,641 @@
       text(el, value) {
         _text(el, value);
       },
-    });
-  }());
-  /* eslint-enable one-var, semi-style, no-underscore-dangle */
+    };
 
 
-  // Returns the library name:
-  return SVG;
-}));
+    // Export
+    /* eslint-disable-next-line no-param-reassign */
+    module.exports = Text;
+
+    /* eslint-enable one-var, semi-style, no-underscore-dangle */
+
+  /* eslint-disable-next-line */
+  }, { './anim': 8 }],
+
+  /* eslint-disable-next-line no-unused-vars */
+  7: ['./src/components/w3c', function(impoort, module, exports) {
+    /* eslint-disable one-var, semi-style, no-underscore-dangle */
+
+
+    // -- Vendor modules
+
+
+    // -- Local modules
+
+
+    // -- Local constants
+
+
+    // -- Local variables
+
+
+    // -- Main
+
+    /* eslint-disable-next-line no-param-reassign */
+    module.exports = {
+      SVG_NS: 'http://www.w3.org/2000/svg',
+      XLINK_NS: 'http://www.w3.org/1999/xlink',
+    };
+  }, {}],
+
+  /* eslint-disable-next-line no-unused-vars */
+  8: ['./src/components/anim', function(impoort, module, exports) {
+    /** ****************************************************************************
+     *
+     * Performs the animations.
+     *
+     * animation.js is just a literal object that contains a set of functions. It
+     * can't be intantiated.
+     *
+     * Private Functions:
+     *  . _rotateRun                  rotates the SVG element,
+     *  . _scaleRun                   scales the SVG element,
+     *  . _translateRun               translates the SVG element,
+     *  . _textRun                    updates the text value from initial to final value,
+     *
+     *
+     * Public Static Methods:
+     *  . rotateRun                   rotates the SVG element,
+     *  . scaleRun                    scales the SVG element,
+     *  . translateRun                translates the SVG element,
+     *  . textRun                     updates the text value from initial to final value,
+     *
+     *
+     *
+     * @namespace    SVG.src.components.anim
+     * @dependencies none
+     * @exports      -
+     * @author       -
+     * @since        0.0.0
+     * @version      -
+     * ************************************************************************** */
+    /* eslint-disable one-var, semi-style, no-underscore-dangle */
+
+
+    // -- Vendor modules
+
+
+    // -- Local modules
+    const _ = impoort('../lib/_');
+    const SVG = impoort('./staticmethods');
+
+
+    // -- Local constants
+
+
+    // -- Local variables
+
+
+    // -- Private Functions --------------------------------------------------------
+
+    /**
+     * Rotates the SVG element.
+     *
+     * Nota:
+     * The animation object must contain the following properties:
+     * {
+     *   start: the value (if omitted, start from current position),
+     *   stop: the final value,
+     *   duration: the elapsed time,
+     *   frequency: the refresh frequency (in pulse per second),
+     *   easing: the easing formula,
+     * }
+     *
+     * @function (arg1, arg2)
+     * @private
+     * @param {Object}          the SVG element,
+     * @param {Object}          the rotation to perform,
+     * @returns {}              -,
+     * @since 0.0.0
+     */
+    function _rotateRun(el, anim) {
+      const r = {
+        a: 0,
+        t: 0,
+        start: _.isNumber(anim.start) ? anim.start : null,
+        stop: _.isNumber(anim.stop) ? anim.stop : 180,
+        period: _.isNumber(anim.frequency) ? 1000 / anim.frequency : 10,
+        easing: _.isFunction(anim.easing) ? anim.easing : _.elinear,
+        duration: _.isNumber(anim.duration) ? anim.duration : 2000,
+      };
+
+      // If anim.start is undefined, we start from the current value:
+      if (_.isNull(r.start)) {
+        const transform = SVG.transformAttrToObj(el.getAttribute('transform'));
+        r.start = _.isObject(transform.scale) && _.isNumber(transform.scale.a)
+          ? transform.scale.a
+          : 180;
+      }
+
+      const timer = setInterval(() => {
+        // Compute the next step:
+        r.t += r.period;
+        // Abort if overflow or if no change in the position.
+        if (r.t > r.duration || r.stop === r.start) { r.t = r.duration; }
+        r.a = r.easing(r.t, r.start, (r.stop - r.start), r.duration);
+
+        // Retrieve transform attributes, set new rotation value and update.
+        const transform = SVG.transformAttrToObj(el.getAttribute('transform'));
+        transform.rotate.a = r.a;
+        el.setAttributeNS(null, 'transform', SVG.transformAttrToStr(transform));
+
+        if (r.t === r.duration) {
+          clearInterval(timer);
+        }
+      }, r.period);
+    }
+
+    /**
+     * Scales the SVG element.
+     *
+     * Nota:
+     * The animation object must contain the following properties:
+     * {
+     *   start: the initial x, y values (if omitted, start from current position),
+     *   stop: the final x, y values,
+     *   duration: the elapsed time,
+     *   frequency: the refresh frequency (in pulse per second),
+     *   easing: the easing formula,
+     * }
+     *
+     * @function (arg1, arg2)
+     * @private
+     * @param {Object}          the SVG object,
+     * @param {Object}          the scaling to perform,
+     * @returns {}              -,
+     * @since 0.0.0
+     */
+    function _scaleRun(el, anim) {
+      const s = {
+        x: 0,
+        y: 0,
+        t: 0,
+        x0: _.isObject(anim.start) && _.isNumber(anim.start.x) ? anim.start.x : null,
+        y0: _.isObject(anim.start) && _.isNumber(anim.start.y) ? anim.start.y : null,
+        x1: _.isObject(anim.stop) && _.isNumber(anim.stop.x) ? anim.stop.x : 1,
+        y1: _.isObject(anim.stop) && _.isNumber(anim.stop.y) ? anim.stop.y : 1,
+        period: _.isNumber(anim.frequency) ? 1000 / anim.frequency : 10,
+        easing: _.isFunction(anim.easing) ? anim.easing : _.elinear,
+        duration: _.isNumber(anim.duration) ? anim.duration : 2000,
+      };
+
+      // if anim.start.x or anim.start.y is undefined, the scaling operation
+      // starts from the current value:
+      const transform = SVG.transformAttrToObj(el.getAttribute('transform'));
+      if (_.isNull(s.x0) || _.isNull(s.y0)) {
+        s.x0 = _.isObject(transform.scale) && _.isNumber(transform.scale.x)
+          ? transform.scale.x
+          : 0;
+        s.y0 = _.isObject(transform.scale) && _.isNumber(transform.scale.y)
+          ? transform.scale.y
+          : 0;
+      }
+
+      // Run:
+      const timer = setInterval(() => {
+        // Compute the next step:
+        s.t += s.period;
+        if (s.t > s.duration) { s.t = s.duration; }
+        s.x = s.easing(s.t, s.x0, (s.x1 - s.x0), s.duration);
+        s.y = s.easing(s.t, s.y0, (s.y1 - s.y0), s.duration);
+
+        // Retrieve transform attributes, set new scale value and update.
+        const tr = SVG.transformAttrToObj(el.getAttribute('transform'));
+        tr.scale.x = s.x;
+        tr.scale.y = s.y;
+        el.setAttributeNS(null, 'transform', SVG.transformAttrToStr(tr));
+
+        if (s.t === s.duration) {
+          clearInterval(timer);
+        }
+      }, s.period);
+    }
+
+    /**
+     * Translates the SVG element.
+     *
+     * Nota:
+     * The animation object must contain the following properties:
+     * {
+     *   start: the initial x, y values (if omitted, start from current position),
+     *   stop: the final x, y values,
+     *   duration: the elapsed time,
+     *   frequency: the refresh frequency (in pulse per second),
+     *   easing: the easing formula,
+     * }
+     *
+     * @function (arg1, arg2)
+     * @private
+     * @param {Object}          the SVG element,
+     * @param {Object}          the translation to perform,
+     * @returns {}              -,
+     * @since 0.0.0
+     */
+    function _translateRun(el, anim) {
+      const v = {
+        x: 0,
+        y: 0,
+        t: 0,
+        length: null,
+        arc: null,
+        period: _.isNumber(anim.frequency) ? 1000 / anim.frequency : 10,
+        easing: _.isFunction(anim.easing) ? anim.easing : _.elinear,
+        duration: _.isNumber(anim.duration) ? anim.duration : 2000,
+      };
+
+      let x0
+        , y0
+        ;
+
+      // Translate starts from the passed-in value or the current position:
+      if (anim.start && _.isNumber(anim.start.x) && _.isNumber(anim.start.y)) {
+        x0 = anim.start.x;
+        y0 = anim.start.y;
+      } else {
+        const transform = SVG.transformAttrToObj(el.getAttribute('transform'));
+        x0 = _.isObject(transform.translate) && _.isNumber(transform.translate.x)
+          ? transform.translate.x
+          : 0;
+        y0 = _.isObject(transform.translate) && _.isNumber(transform.translate.y)
+          ? transform.translate.x
+          : 0;
+      }
+
+      /* eslint-disable-next-line no-restricted-properties */
+      v.length = Math.sqrt(Math.pow((anim.stop.x - x0), 2) + Math.pow((anim.stop.y - y0), 2));
+      v.arc = Math.atan((anim.stop.y - y0) / (anim.stop.x - x0));
+      if (anim.stop.x - x0 < 0) v.arc += -Math.PI;
+      if (v.length === 0) v.arc = 0;
+
+      const timer = setInterval(() => {
+        // Compute the next step:
+        v.t += v.period;
+        if (v.t > v.duration) v.t = v.duration;
+        v.x = (v.easing(v.t, 0, v.length, v.duration) * Math.cos(v.arc)) + x0;
+        v.y = (v.easing(v.t, 0, v.length, v.duration) * Math.sin(v.arc)) + y0;
+
+        // Retrieve the transform attributes, set the new position value and update:
+        const trform = SVG.transformAttrToObj(el.getAttribute('transform'));
+        trform.translate.x = v.x;
+        trform.translate.y = v.y;
+        el.setAttributeNS(null, 'transform', SVG.transformAttrToStr(trform));
+
+        // Stop the timer if destination point reached.
+        if (v.t === v.duration) {
+          clearInterval(timer);
+        }
+      }, v.period);
+    }
+
+    /**
+     * Updates dynamically the text value from the initial to the final value.
+     *
+     * Nota:
+     * The animation object must contain the following properties:
+     * {
+     *   start: the initial value,
+     *   stop: the final value,
+     *   duration: the elapsed time,
+     *   frequency: the refresh frequency (in pulse per second),
+     *   easing: the easing formula,
+     * }
+     *
+     * @function (arg1, arg2)
+     * @private
+     * @param {Object}          the SVG object,
+     * @param {Object}          the animation parameters,
+     * @returns {}              -,
+     * @since 0.0.0
+     */
+    function _textRun(el, anim) {
+      const d = {
+        period: _.isNumber(anim.frequency) ? 1000 / anim.frequency : 10,
+        easing: _.isFunction(anim.easing) ? anim.easing : _.elinear,
+        value: 0,
+        start: _.isNumber(anim.start) ? anim.start : 0,
+        stop: _.isNumber(anim.stop) ? anim.stop : 0,
+        t: 0,
+        duration: _.isNumber(anim.duration) ? anim.duration : 2000,
+      };
+
+      // Run:
+      const timer = setInterval(() => {
+        // Compute the next step:
+        d.t += d.period;
+        // Abort if overflow or if no change in the position.
+        if (d.t > d.duration || d.stop === d.start) {
+          d.t = d.duration;
+        }
+        d.value = d.easing(d.t, d.start, (d.stop - d.start), d.duration);
+        if (d.duration === 0) {
+          d.value = d.start;
+        }
+
+        // Display the new digit value:
+        /* eslint-disable-next-line no-param-reassign */
+        el.textContent = d.value.toFixed(0);
+
+        // is animation over?
+        if (d.t === d.duration) {
+          clearInterval(timer);
+        }
+      }, d.period);
+    }
+
+
+    // -- Public Static Methods ----------------------------------------------------
+
+    const Anim = {
+
+      /**
+       * Rotates the SVG element.
+       *
+       * @method (arg1, arg2)
+       * @public
+       * @param {Object}        the SVG element,
+       * @param {Object}        the rotation to perform,
+       * @returns {}            -,
+       * @since 0.0.0
+       */
+      rotateRun(el, anim) {
+        _rotateRun(el, anim);
+      },
+
+      /**
+       * Scales the SVG element;
+       *
+       * @method (arg1, arg2)
+       * @public
+       * @param {Object}        the SVG element,
+       * @param {Object}        the scaling to perform,
+       * @returns {}            -,
+       * @since 0.0.0
+       */
+      scaleRun(el, anim) {
+        _scaleRun(el, anim);
+      },
+
+      /**
+       * Translates the SVG Element.
+       *
+       * @method (arg1, arg2)
+       * @public
+       * @param {Object}        the SVG element,
+       * @param {Object}        the translation to perform,
+       * @returns {}            -,
+       * @since 0.0.0
+       */
+      translateRun(el, anim) {
+        _translateRun(el, anim);
+      },
+
+      /**
+       * Updates dynamically the text value from the initial to the final value.
+       *
+       * @method (arg1, arg2)
+       * @public
+       * @param {Object}        the SVG element,
+       * @param {Object}        the animation parameters,
+       * @returns {}            -,
+       * @since 0.0.0
+       */
+      textRun(el, anim) {
+        _textRun(el, anim);
+      },
+    };
+
+
+    // Export
+    /* eslint-disable-next-line no-param-reassign */
+    module.exports = Anim;
+
+    /* eslint-enable one-var, semi-style, no-underscore-dangle */
+
+  /* eslint-disable-next-line */
+  }, { '../lib/_': 9, './staticmethods': 4 }],
+
+  /* eslint-disable-next-line no-unused-vars */
+  9: ['./src/lib/_', function(impoort, module, exports) {
+    /** ****************************************************************************
+     *
+     * Provides a subset of the overslash library.
+     *
+     * _.js is just a literal object that contains a set of functions. It
+     * can't be intantiated.
+     *
+     * Private Functions:
+     *  . none,
+     *
+     *
+     * Public Static Methods:
+     *  . extend                      extends the passed-in object with new methods,
+     *
+     *  . isUndefined                 is a given variable undefined?
+     *  . isNull                      is a given value null?
+     *  . isBoolean                   is a given value a boolean?
+     *  . isString                    is a given value a string?
+     *  . isNumber                    is a given value a number?
+     *  . isObject                    is a given variable an object?
+     *  . isLiteralObject             is a given variable a literal object?
+     *  . isFunction                  is a given variable a function?
+     *  . isArray                     is a given value an array?
+     *
+     *  . linear                      linear easing method,
+     *
+     *
+     *
+     * @namespace    -
+     * @dependencies none
+     * @exports      -
+     * @author       -
+     * @since        0.0.0
+     * @version      -
+     * ************************************************************************** */
+    /* - */
+
+
+    // -- Vendor modules
+
+
+    // -- Local modules
+
+
+    // -- Local constants
+
+
+    // -- Local variables
+
+
+    // -- Public Methods -------------------------------------------------------
+
+    const _ = {
+
+      /**
+       * Extends the passed-in object with new methods.
+       *
+       * Nota: this function mutates object.
+       *
+       * @function (arg1, arg2)
+       * @private
+       * @param {Object}        the object to extend,
+       * @param {Object}        an object containing a set of methods,
+       * @returns {}            -,
+       * @since 0.0.0
+       */
+      extend(object, methods) {
+        const keys = Object.keys(methods);
+        for (let i = 0; i < keys.length; i++) {
+          /* eslint-disable-next-line no-param-reassign */
+          object[keys[i]] = methods[keys[i]];
+        }
+        return object;
+      },
+
+      /**
+       * Is a given variable undefined?
+       *
+       * @method (arg1)
+       * @public
+       * @param {Object}        the object to test,
+       * @returns {Boolean}     returns true or false,
+       * @since 0.0.0
+       */
+      isUndefined(obj) {
+        return obj === undefined;
+      },
+
+      /**
+       * Is a given value null?
+       *
+       * @method (arg1)
+       * @public
+       * @param {Object}        the object to test,
+       * @returns {Boolean}     returns true or false,
+       * @since 0.0.0
+       */
+      isNull(obj) {
+        return obj === null;
+      },
+
+      /**
+       * Is a given value a boolean?
+       *
+       * @method (arg1)
+       * @public
+       * @param {Object}      the object to test,
+       * @returns {Boolean}   returns true or false,
+       * @since 0.0.0
+       */
+      isBoolean(obj) {
+        return obj === true || obj === false || Object.prototype.toString.call(obj) === '[object Boolean]';
+      },
+
+      /**
+       * Is a given value a string?
+       *
+       * @method (arg1)
+       * @public
+       * @param {Object}        the object to test,
+       * @returns {Boolean}     returns true or false,
+       * @since 0.0.0
+       */
+      isString(obj) {
+        return Object.prototype.toString.call(obj) === '[object String]';
+      },
+
+      /**
+       * Is a given value a number?
+       *
+       * @method (arg1)
+       * @public
+       * @param {Object}        the object to test,
+       * @returns {Boolean}     returns true or false,
+       * @since 0.0.0
+       */
+      isNumber(obj) {
+        return Object.prototype.toString.call(obj) === '[object Number]';
+      },
+
+      /**
+       * Is a given variable an object?
+       * (copied from: http://underscorejs.org)
+       *
+       * @method (arg1)
+       * @public
+       * @param {Object}        the object to test,
+       * @returns {Boolean}     returns true or false,
+       * @since 0.0.0
+       */
+      isObject(obj) {
+        const type = typeof obj;
+        return (type === 'function' || type === 'object') && !!obj;
+      },
+
+      /**
+       * Is a given variable a literal object?
+       *
+       * @method (arg1)
+       * @private
+       * @param {Object}        the object to test,
+       * @returns {Boolean}     returns true or false,
+       * @since 0.0.3
+       */
+      isLiteralObject(obj) {
+        return Object.prototype.toString.call(obj) === '[object Object]';
+      },
+
+      /**
+       * Is a given variable a function?
+       *
+       * @method (arg1)
+       * @public
+       * @param {Object}      the object to test,
+       * @returns {Boolean}   returns true or false,
+       * @since 0.0.0
+       */
+      isFunction(obj) {
+        return Object.prototype.toString.call(obj) === '[object Function]';
+      },
+
+      /**
+       * Is a given value an array?
+       * (Delegates to ECMA5's native Array.isArray.)
+       * (copied from: http://underscorejs.org)
+       *
+       * @method (arg1)
+       * @public
+       * @param {Object}        the object to test,
+       * @returns {Boolean}     returns true or false,
+       * @since 0.0.0
+       */
+      isArray(obj) {
+        return Object.prototype.toString.call(obj) === '[object Array]';
+      },
+
+      /**
+       * Computes the intermediate values according to a linear progression.
+       *
+       * @method (arg1, arg2, arg3, arg4)
+       * @public
+       * @param {Number}        the current time,
+       * @param {Number}        the beginning value,
+       * @param {Number}        the change in value,
+       * @param {Number}        the duration,
+       * @returns {Number}      returns the computed value,
+       */
+      elinear(t, b, c, d) {
+        return (c * t) / d + b;
+      },
+    };
+
+
+    // Export
+    /* eslint-disable-next-line no-param-reassign */
+    module.exports = _;
+
+    /* - */
+  }, {}],
+
+/* eslint-disable-next-line */
+},{},[1])(1)}));

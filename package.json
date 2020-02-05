@@ -1,24 +1,29 @@
 {
   "name": "@mobilabs/svg",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A tiny Javascript library intended to create and manage SVG elements in the DOM",
-  "main": "index.js",
+  "main": "_dist/lib/svg.js",
   "bin": {},
   "scripts": {
     "build": "gulp build",
     "watch": "gulp watch",
-    "makedist": "gulp makedist",
+    "dev": "gulp rundev",
     "test": "cross-env NODE_ENV=test nyc --reporter=lcov mocha ./test/main.js",
-    "check-coverage": "nyc check-coverage --statements 10 --branches 5 --functions 10 --lines 10",
     "display-coverage": "opener ./coverage/lcov-report/index.html",
+    "check-coverage": "nyc check-coverage --statements 60 --branches 30 --functions 60 --lines 60",
     "report-coverage": "nyc report --reporter=text-lcov | coveralls",
-    "report": "nyc report"
+    "report": "nyc report",
+    "makedist": "gulp makedist",
+    "app": "gulp runapp",
+    "doc": ""
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/jclo/svg.git"
   },
-  "keywords": [],
+  "keywords": [
+    "ES6"
+  ],
   "author": {
     "name": "Mobilabs",
     "email": "contact@mobilabs.fr",
@@ -31,24 +36,26 @@
   "homepage": "https://github.com/jclo/svg",
   "dependencies": {},
   "devDependencies": {
-    "chai": "4.2.0",
-    "coveralls": "3.0.9",
-    "cross-env": "6.0.3",
-    "del": "5.1.0",
-    "eslint": "6.8.0",
-    "eslint-config-airbnb-base": "14.0.0",
-    "eslint-plugin-import": "2.19.1",
-    "gulp": "4.0.2",
-    "gulp-concat": "2.6.1",
-    "gulp-footer": "2.0.2",
-    "gulp-header": "2.0.9",
-    "gulp-replace": "1.0.0",
-    "gulp-uglify-es": "2.0.0",
-    "husky": "3.1.0",
-    "jsdom": "15.2.1",
-    "mocha": "6.2.2",
-    "nyc": "15.0.0",
-    "opener": "1.5.1"
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.9",
+    "cross-env": "^7.0.0",
+    "del": "^5.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.7.0",
+    "gulp-header": "^2.0.9",
+    "gulp-replace": "^1.0.0",
+    "gulp-uglify-es": "^2.0.0",
+    "husky": "^4.2.1",
+    "jsdom": "^16.1.0",
+    "mocha": "^7.0.1",
+    "nyc": "^15.0.0",
+    "open": "^7.0.2",
+    "opener": "^1.5.1",
+    "pakket": "0.0.0"
   },
   "publishConfig": {
     "access": "public"
