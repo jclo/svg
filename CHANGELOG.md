@@ -3,7 +3,7 @@
 ### 0.0.4 (February 5, 2020)
 
   * Added the bundler Pakket,
-  * ...,
+  * Release.
 
 
 ### 0.0.3 (December 30, 2019)
