@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * SVG v0.0.4
+ * SVG v0.0.5
  *
  * A tiny Javascript library intended to create and manage SVG elements in the DOM.
  * (you can download it from npm or github repositories)

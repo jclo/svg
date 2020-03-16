@@ -1,5 +1,10 @@
 ### HEAD
 
+### 0.0.5 (March 16, 2020)
+
+  * Reconciled version number between npm and github by releasing 0.0.5.
+
+
 ### 0.0.4 (March 16, 2020)
 
   * Updated the dependencies,
