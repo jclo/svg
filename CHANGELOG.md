@@ -3,6 +3,7 @@
 ### 0.0.4 (March 16, 2020)
 
   * Updated the dependencies,
+  * Fixed the version number,
   * ...,
 
 
