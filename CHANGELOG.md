@@ -1,5 +1,11 @@
 ### HEAD
 
+### 0.0.4 (March 16, 2020)
+
+  * Updated the dependencies,
+  * ...,
+
+
 ### 0.0.3 (December 30, 2019)
 
   * Added a private reference to the library and updated the dependencies,

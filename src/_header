@@ -1,4 +1,3 @@
-// Based on ES6.lib template v0.0.3
 // ESLint declarations
 /* global define */
 /* eslint strict: ["error", "function"] */
@@ -13,6 +12,7 @@
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
+    /* eslint-disable-next-line no-param-reassign */
     module.exports = factory(root);
     // This is a hack to attach the lib to the browser root when this lib is
     // included inside another lib and the whole is browserifyied:
