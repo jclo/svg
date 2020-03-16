@@ -4,7 +4,7 @@
 
   * Updated the dependencies,
   * Fixed the version number,
-  * ...,
+  * Release.
 
 
 ### 0.0.3 (December 30, 2019)
