@@ -3,7 +3,7 @@
    * Set JavaScript language options
    */
   "parserOptions": {
-    "sourceType": "script",
+    "sourceType": "module",
   },
   /**
    * Set Environnement

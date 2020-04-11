@@ -1,34 +1,30 @@
 /* eslint  one-var: 0, import/no-extraneous-dependencies: 0, semi-style: 0 */
 
-'use strict';
 
-// -- Node modules
+// -- Vendor Modules
 const { src, dest, series } = require('gulp')
     , del     = require('del')
     , concat  = require('gulp-concat')
+    , Kadoo   = require('kadoo')
     , replace = require('gulp-replace')
     ;
 
 
-// -- Local modules
-const config = require('./config')
-   ;
-
-
-// -- Local constants
-const destination  = config.libdir
-    , source       = config.src
-    , lib          = config.libname
-    , name         = lib.replace(/\s+/g, '').toLowerCase()
-    , { parent }   = config
-    , { noparent } = config
-    , head         = source[0]
-    , core         = source.slice(1, -1)
-    , foot         = source[source.length - 1]
+// -- Local Modules
+const pack   = require('../package.json')
+    , config = require('./config')
     ;
 
 
-// -- Local variables
+// -- Local Constants
+const destination = config.libdir
+    , { source }  = config
+    , { name }    = config
+    , { version } = pack
+    ;
+
+
+// -- Local Variables
 
 
 // -- Gulp Private Tasks
@@ -39,43 +35,40 @@ function clean(done) {
   done();
 }
 
-// Creates the indented content.
-function docore() {
-  return src(core)
-    // remove the extra 'use strict':
-    .pipe(replace(/\n'use strict';\n/, ''))
-    // indent the first line with 2 spaces:
-    .pipe(replace(/^/g, '  '))
-    // indent each other lines with 2 spaces:
-    .pipe(replace(/\n/g, '\n  '))
-    .pipe(concat('core.js'))
-    .pipe(dest(destination));
-}
-
-// Creates the library without 'this'.
-function dolibnoparent() {
-  return src([head, `${destination}/core.js`, foot])
-    .pipe(replace('{{lib:name}}', lib))
-    .pipe(concat(`${name}${noparent}.js`))
-    // fix the blanck lines we indented too:
-    .pipe(replace(/\s{2}\n/g, '\n'))
-    .pipe(dest(destination));
-}
-
 // Creates the library.
 function dolib() {
-  return src(`${destination}/${name}${noparent}.js`)
-    .pipe(replace('{{lib:parent}}', parent))
+  const kadoo = Kadoo(source);
+
+  return kadoo.bundle()
+    .pipe(replace('{{lib:version}}', version))
     .pipe(concat(`${name}.js`))
-    .pipe(dest(destination));
+    .pipe(dest(destination))
+  ;
 }
 
-// Removes the temp file(s).
-function delcore(done) {
-  del.sync(`${destination}/core.js`);
-  done();
+// Remove extra global.
+// (keep the first global only)
+function rmextraglob() {
+  return src(`${destination}/${name}.js`)
+    .pipe(replace(/\/\* global/, '/* gloobal'))
+    .pipe(replace(/\/\* global[\w$_\s,]+\*\//g, '/* - */'))
+    .pipe(replace(/\/\* gloobal/, '/* global'))
+    .pipe(dest(destination))
+  ;
+}
+
+// Remove extra 'use strict'.
+// (keep the two first only)
+function rmextrastrict() {
+  return src(`${destination}/${name}.js`)
+    .pipe(replace(/use strict/, 'use_strict'))
+    .pipe(replace(/use strict/, 'use_strict'))
+    .pipe(replace(/'use strict';/g, '/* - */'))
+    .pipe(replace(/use_strict/g, 'use strict'))
+    .pipe(dest(destination))
+  ;
 }
 
 
 // -- Gulp Public Task(s)
-module.exports = series(clean, docore, dolibnoparent, dolib, delcore);
+module.exports = series(clean, dolib, rmextraglob, rmextrastrict);

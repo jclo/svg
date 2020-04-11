@@ -1,22 +1,27 @@
 /* eslint one-var: 0, semi-style: 0 */
 
-'use strict';
 
-// -- Node modules
+// -- Vendor Modules
 const { watch, series } = require('gulp')
     , connect = require('gulp-connect')
     , open    = require('open')
     ;
 
-// -- Local constants
-const filesToWatch = ['src/**/*.js', 'src/_header', 'src/_footer']
+
+// -- Local Modules
+
+
+// -- Local Constants
+const filesToWatch = ['src/**/*.js']
     ;
 
-// -- Local variables
+
+// -- Local Variables
+
 
 // -- Gulp Private Tasks
-const build       = require('./tasks/makejs')
-    , makedist    = require('./tasks/makedist')
+const build    = require('./tasks/makejs')
+    , makedist = require('./tasks/makedist')
     ;
 
 
@@ -51,8 +56,8 @@ function appserver(done) {
 
 
 // Gulp Public Tasks:
-exports.watch = fwatch;
 exports.build = build;
+exports.watch = fwatch;
 exports.rundev = devserver;
 exports.makedist = makedist;
 exports.runapp = appserver;

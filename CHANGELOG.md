@@ -1,8 +1,15 @@
 ### HEAD
 
+### 0.0.6 (April 11, 2020)
+
+  * Updated the project with the boilerplate ES6Kadoo,
+  * ...,
+
+
 ### 0.0.5 (March 16, 2020)
 
-  * Reconciled version number between npm and github by releasing 0.0.5.
+  * Reconciled version number between npm and github.
+  * Release.
 
 
 ### 0.0.4 (March 16, 2020)
