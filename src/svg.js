@@ -82,7 +82,7 @@ function SVG(sel) {
   const { id, _root } = S.create(sel);
   obj.id = id;
   obj._root = _root;
-  // obj._SVG = SVG;
+  obj._SVG = SVG;
   return obj;
 }
 

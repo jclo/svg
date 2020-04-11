@@ -31,8 +31,8 @@ module.exports = function(SVG, app) {
       expect(svg).to.be.an('object');
     });
 
-    it('Expects SVG(app) to own two properties.', () => {
-      expect(Object.getOwnPropertyNames(svg)).to.be.an('array').that.has.lengthOf(2);
+    it('Expects SVG(app) to own three properties.', () => {
+      expect(Object.getOwnPropertyNames(svg)).to.be.an('array').that.has.lengthOf(3);
     });
 
     it('Expects SVG(app) to own the property "id" that is a string of 8 chars.', () => {
@@ -41,6 +41,10 @@ module.exports = function(SVG, app) {
 
     it('Expects SVG(app) to own the property "_root".', () => {
       expect(svg).to.own.property('_root');
+    });
+
+    it('Expects SVG(app) to own the property "_SVG".', () => {
+      expect(svg).to.own.property('_SVG');
     });
 
     it('Expects SVG(app) to create an svg node.', () => {
