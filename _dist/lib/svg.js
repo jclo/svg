@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * SVG v0.1.0-beta.1
+ * SVG v0.1.0
  *
  * A tiny Javascript library intended to create and manage SVG elements in the DOM.
  * (you can download it from npm or github repositories)
@@ -131,7 +131,7 @@
       const { id, _root } = S.create(sel);
       obj.library = {
         name: 'SVG',
-        version: '0.1.0-beta.1',
+        version: '0.1.0',
       };
       obj.id = id;
       obj._root = _root;
@@ -140,7 +140,7 @@
     };
 
     // Attaches a constant to SVG that provides the version of the lib.
-    SVG.VERSION = '0.1.0-beta.1';
+    SVG.VERSION = '0.1.0';
 
 
     // -- Private Static Methods -----------------------------------------------
