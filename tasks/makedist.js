@@ -49,6 +49,13 @@ function copydev() {
     .pipe(dest(`${dist}/lib`));
 }
 
+// Copies the es6 development version.
+function copyes6dev() {
+  return src(`${libdir}/${name}.mjs`)
+    .pipe(header(license))
+    .pipe(dest(`${dist}/lib`));
+}
+
 // Creates the minified version.
 function makeminified() {
   return src(`${libdir}/${name}.js`)
@@ -59,10 +66,20 @@ function makeminified() {
     .pipe(dest(`${dist}/lib`));
 }
 
+// Creates the minified version.
+function makees6minified() {
+  return src(`${libdir}/${name}.mjs`)
+    .pipe(replace('/*! ***', '/** ***'))
+    .pipe(uglify())
+    .pipe(header(license))
+    .pipe(concat(`${name}.min.mjs`))
+    .pipe(dest(`${dist}/lib`));
+}
+
 
 // -- Gulp Public Task(s):
 
 module.exports = series(
   deldist,
-  parallel(doskeleton, copydev, makeminified),
+  parallel(doskeleton, copydev, copyes6dev, makeminified, makees6minified),
 );

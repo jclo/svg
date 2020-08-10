@@ -15,7 +15,7 @@
  *
  *
  * Private Static Methods:
- *  . _setTestMode                returns the internal objects for testing purpose,
+ *  . _setTestMode                returns internal objects for testing purpose,
  *
  *
  * Public Static Methods:
@@ -77,23 +77,24 @@ let methods;
  * @returns {Object}        returns the SVG object,
  * @since 0.0.0
  */
-function SVG(sel) {
+const SVG = function(sel) {
   const obj = Object.create(_.extend(methods, $));
   const { id, _root } = S.create(sel);
+  obj.library = {
+    name: '{{lib:name}}',
+    version: '{{lib:version}}',
+  };
   obj.id = id;
   obj._root = _root;
   obj._SVG = SVG;
   return obj;
-}
+};
 
 // Attaches a constant to SVG that provides the version of the lib.
 SVG.VERSION = '{{lib:version}}';
 
 
-// -- Static Methods -------------------------------------------------------
-
-
-// -- Private --------------------------------------------------------------
+// -- Private Static Methods -----------------------------------------------
 
 /**
  * Returns the internal objects for testing purpose.
@@ -101,7 +102,7 @@ SVG.VERSION = '{{lib:version}}';
  * @method ()
  * @private
  * @param {}                -,
- * @returns {Object}        returns a list of internal object,
+ * @returns {Object}        returns a list of internal objects,
  * @since 0.0.0
  */
 SVG._setTestMode = function() {
@@ -109,7 +110,7 @@ SVG._setTestMode = function() {
 };
 
 
-// -- Public ---------------------------------------------------------------
+// -- Public Static Methods ------------------------------------------------
 
 /**
  * Returns a reference to this SVG object.

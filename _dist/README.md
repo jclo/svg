@@ -1,14 +1,13 @@
 # SVG
 
 [![NPM version][npm-image]][npm-url]
+[![GitHub last commit][commit-image]][commit-url]
 [![Travis CI][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 [![Dependencies status][dependencies-image]][dependencies-url]
 [![Dev Dependencies status][devdependencies-image]][devdependencies-url]
+[![npm bundle size][npm-bundle-size-image]][npm-bundle-size-url]
 [![License][license-image]](LICENSE.md)
-<!--- [![node version][node-image]][node-url] -->
-
-[![NPM install][npm-install-image]][npm-install-url]
 
 SVG is a tiny Javascript library intended to create and manage SVG elements in the DOM. SVG is designed to be embedded in another library. SVG is intended to run on ECMAScript 2015 (ES6) compliant browsers.
 
@@ -138,21 +137,21 @@ SVG.noConflict();
 <!--- URls -->
 
 [npm-image]: https://img.shields.io/npm/v/@mobilabs/svg.svg?style=flat-square
-[npm-install-image]: https://nodei.co/npm/@mobilabs/svg.png?compact=true
-[node-image]: https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square
-[download-image]: https://img.shields.io/npm/dm/@mobilabs/svg.svg?style=flat-square
+[release-image]: https://img.shields.io/github/release/jclo/svg.svg?include_prereleases&style=flat-square
+[commit-image]: https://img.shields.io/github/last-commit/jclo/svg.svg?style=flat-square
 [travis-image]: https://img.shields.io/travis/jclo/svg.svg?style=flat-square
 [coveralls-image]: https://img.shields.io/coveralls/jclo/svg/master.svg?style=flat-square
 [dependencies-image]: https://david-dm.org/jclo/svg/status.svg?theme=shields.io
 [devdependencies-image]: https://david-dm.org/jclo/svg/dev-status.svg?theme=shields.io
+[npm-bundle-size-image]: https://img.shields.io/bundlephobia/minzip/@mobilabs/svg.svg?style=flat-square
 [license-image]: https://img.shields.io/npm/l/@mobilabs/svg.svg?style=flat-square
 
 [npm-url]: https://www.npmjs.com/package/@mobilabs/svg
-[npm-install-url]: https://nodei.co/npm/@mobilabs/svg
-[node-url]: http://nodejs.org/download
-[download-url]: https://www.npmjs.com/package/@mobilabs/svg
+[release-url]: https://github.com/jclo/svg/tags
+[commit-url]: https://github.com/jclo/svg/commits/master
 [travis-url]: https://travis-ci.org/jclo/svg
 [coveralls-url]: https://coveralls.io/github/jclo/svg?branch=master
 [dependencies-url]: https://david-dm.org/jclo/svg
 [devdependencies-url]: https://david-dm.org/jclo/svg?type=dev
 [license-url]: http://opensource.org/licenses/MIT
+[npm-bundle-size-url]: https://img.shields.io/bundlephobia/minzip/@mobilabs/svg
