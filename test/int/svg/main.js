@@ -31,39 +31,6 @@ module.exports = function(SVG, app) {
       expect(svg).to.be.an('object');
     });
 
-    it('Expects SVG(app) to own four properties.', () => {
-      expect(Object.getOwnPropertyNames(svg)).to.be.an('array').that.has.lengthOf(4);
-    });
-
-    it('Expects SVG(app) to own the property "id" that is a string of 8 chars.', () => {
-      expect(svg).to.own.property('id').that.is.a('string').that.has.lengthOf(8);
-    });
-
-    it('Expects SVG(app) to own the property "_root".', () => {
-      expect(svg).to.own.property('_root');
-    });
-
-    it('Expects SVG(app) to own the property "_SVG".', () => {
-      expect(svg).to.own.property('_SVG');
-    });
-
-    it('Expects it to own the property "library" that is an object.', () => {
-      expect(svg).to.own.property('library').that.is.an('object');
-    });
-
-    it('Expects library to own 2 properties.', () => {
-      const props = Object.getOwnPropertyNames(svg.library);
-      expect(props).to.be.an('array').that.has.lengthOf(2);
-    });
-
-    it('Expects it to own the property "name" that is equal to "{{lib:name}}".', () => {
-      expect(svg.library).to.own.property('name').that.is.equal('{{lib:name}}');
-    });
-
-    it('Expects it to own the property "version" that is equal to {{lib:version}}.', () => {
-      expect(svg.library).to.own.property('version').that.is.equal('{{lib:version}}');
-    });
-
     it('Expects SVG(app) to create an svg node.', () => {
       const svgnode = document.querySelector(app).firstElementChild;
       expect(svgnode.tagName).to.be.a('string').that.is.equal('svg');

@@ -28,7 +28,7 @@
  *
  *
  * Public Methods:
- *  . none yet,
+ *  . whoami                      returns the library name and version,
  *
  *
  *
@@ -80,7 +80,7 @@ let methods;
 const SVG = function(sel) {
   const obj = Object.create(_.extend(methods, $));
   const { id, _root } = S.create(sel);
-  obj.library = {
+  obj._library = {
     name: '{{lib:name}}',
     version: '{{lib:version}}',
   };
@@ -90,7 +90,8 @@ const SVG = function(sel) {
   return obj;
 };
 
-// Attaches a constant to SVG that provides the version of the lib.
+// Attaches constants to SVG that provide name and version of the lib.
+SVG.NAME = '{{lib:name}}';
 SVG.VERSION = '{{lib:version}}';
 
 
@@ -98,6 +99,7 @@ SVG.VERSION = '{{lib:version}}';
 
 /**
  * Returns the internal objects for testing purpose.
+ * (must not be deleted)
  *
  * @method ()
  * @private
@@ -114,9 +116,10 @@ SVG._setTestMode = function() {
 
 /**
  * Returns a reference to this SVG object.
+ * (must not be deleted)
  *
  * Nota:
- * Running SVG in noConflic mode, returns the SVG variable to
+ * Running SVG in noConflict mode, returns the SVG variable to
  * its previous owner.
  *
  * @method ()
@@ -125,7 +128,6 @@ SVG._setTestMode = function() {
  * @returns {Object}        returns the SVG object,
  * @since 0.0.0
  */
-/* istanbul ignore next */
 SVG.noConflict = function() {
   /* eslint-disable-next-line no-param-reassign */
   root.SVG = previousSVG;
@@ -218,7 +220,20 @@ SVG.getMultipolyline = function(shape, closed) {
 // -- Public Methods -------------------------------------------------------
 
 methods = {
-  // none,
+
+  /**
+   * Returns the library name and version.
+   * (must not be deleted)
+   *
+   * @method ()
+   * @public
+   * @param {}              -,
+   * @returns {Object}      returns the library name and version,
+   * @since 0.0.0
+   */
+  whoami() {
+    return this._library;
+  },
 };
 
 

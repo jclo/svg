@@ -1,6 +1,6 @@
 // ESLint declarations:
-/* global describe, it */
-/* eslint one-var: 0, no-unused-vars: 0, semi-style: 0, no-underscore-dangle: 0 */
+/* global describe */
+/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
 
 
 // -- Vendor Modules
@@ -9,18 +9,21 @@ const { JSDOM } = require('jsdom')
 
 
 // -- Local Modules
-const SVG = require('../src/svg').default
-    , test1 = require('./int/main')
-    , test_ = require('./int/lib/_')
-    , test$ = require('./int/lib/$')
-    , test2 = require('./int/svg/main')
-    , test3 = require('./int/svg/methods')
-    , test4 = require('./int/svg/static')
-    , test5 = require('./int/svg/anim')
+const // SVG    = require('../index')
+    SVG       = require('../src/svg').default
+    // , pack = require('../package.json')
+    , testlib = require('./int/lib')
+    , test_   = require('./int/lib/_')
+    , test$   = require('./int/lib/$')
+    , test2   = require('./int/svg/main')
+    , test3   = require('./int/svg/methods')
+    , test4   = require('./int/svg/static')
+    , test5   = require('./int/svg/anim')
     ;
 
 
 // -- Local Constants
+const libname = 'SVG';
 
 
 // -- Local Variables
@@ -58,9 +61,20 @@ global.window = dom.window;
 global.document = dom.window.document;
 global.navigator = { userAgent: 'node.js' };
 
+// Nota:
+// If you choose 'SVG = require('../index')', 'display-coverage' will
+// show the coverage of all the library in one file.
+//
+// If you want to display the coverage file by file, you must choose
+// 'SVG = require('../src/prototypal').default'. But, in this case,
+// the build isn't done, so you should pass '{{lib:name}}' as libname and
+// '{{lib:version}}' as the library version.
+
 describe('Test SVG:', () => {
+  testlib(SVG, '{{lib:name}}', '{{lib:version}}');
+  // testlib(SVG, libname, pack.version);
+
   // Start testing the libraries _.js and $.js:
-  test1(SVG);
   test_(SVG);
   test$(SVG);
 
