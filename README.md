@@ -4,8 +4,6 @@
 [![GitHub last commit][commit-image]][commit-url]
 [![Travis CI][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
-[![Dependencies status][dependencies-image]][dependencies-url]
-[![Dev Dependencies status][devdependencies-image]][devdependencies-url]
 [![npm bundle size][npm-bundle-size-image]][npm-bundle-size-url]
 [![License][license-image]](LICENSE.md)
 
@@ -149,7 +147,7 @@ SVG.noConflict();
 [npm-url]: https://www.npmjs.com/package/@mobilabs/svg
 [release-url]: https://github.com/jclo/svg/tags
 [commit-url]: https://github.com/jclo/svg/commits/master
-[travis-url]: https://travis-ci.org/jclo/svg
+[travis-url]: https://app.travis-ci.com/jclo/svg
 [coveralls-url]: https://coveralls.io/github/jclo/svg?branch=master
 [dependencies-url]: https://david-dm.org/jclo/svg
 [devdependencies-url]: https://david-dm.org/jclo/svg?type=dev

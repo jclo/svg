@@ -26,11 +26,11 @@ module.exports = {
   libdir: './lib',
   libname,
   name,
+  index: './index.js',
+  distlink: `./_dist/lib/${name}.js`,
 
   // This is the entry javascript file of your library.
   source,
-  index: './index.js',
-  distlink: `./_dist/lib/${name}.js`,
 
   get license() {
     return ['/*! ****************************************************************************',
@@ -41,7 +41,7 @@ module.exports = {
       ` * Copyright (c) ${(new Date()).getFullYear()} ${pack.author.name} <${pack.author.email}> (${pack.author.url}).`,
       ' * Released under the MIT license. You may obtain a copy of the License',
       ' * at: http://www.opensource.org/licenses/mit-license.php).',
-      ' * Built from ES6Kadoo v1.0.1.',
+      ' * Built from ES6Kadoo v1.0.10.',
       ' * ************************************************************************** */',
       ''].join('\n');
   },

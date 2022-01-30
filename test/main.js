@@ -9,10 +9,8 @@ const { JSDOM } = require('jsdom')
 
 
 // -- Local Modules
-const // SVG    = require('../index')
-    SVG       = require('../src/svg').default
-    // , pack = require('../package.json')
-    , testlib = require('./int/lib')
+const testlib = require('./int/lib')
+    , pack    = require('../package.json')
     , test_   = require('./int/lib/_')
     , test$   = require('./int/lib/$')
     , test2   = require('./int/svg/main')
@@ -61,18 +59,26 @@ global.window = dom.window;
 global.document = dom.window.document;
 global.navigator = { userAgent: 'node.js' };
 
+// This define root for Node.js:
+global.root = {};
+
 // Nota:
-// If you choose 'SVG = require('../index')', 'display-coverage' will
-// show the coverage of all the library in one file.
+// If you want that 'display-coverage' shows the coverage files by files,
+// you should set 'SVG' and 'testlib' like this:
+//  . const SVG = require('../src/<file>').default;
+//  . testlib(SVG, '{{lib:name}}', '{{lib:version}}', 'without new');
 //
-// If you want to display the coverage file by file, you must choose
-// 'SVG = require('../src/prototypal').default'. But, in this case,
-// the build isn't done, so you should pass '{{lib:name}}' as libname and
-// '{{lib:version}}' as the library version.
+// But, if you want that 'display-coverage' shows the coverage in one file,
+// you should set 'SVG' and 'testlib' like this:
+//  . const SVG = require('../index');
+//  . testlib(SVG, libname, pack.version, 'without new');
+
+const SVG = require('../src/svg').default;
+// const SVG = require('../index');
 
 describe('Test SVG:', () => {
-  testlib(SVG, '{{lib:name}}', '{{lib:version}}');
-  // testlib(SVG, libname, pack.version);
+  testlib(SVG, '{{lib:name}}', '{{lib:version}}', 'without new');
+  // testlib(SVG, libname, pack.version, 'without new');
 
   // Start testing the libraries _.js and $.js:
   test_(SVG);

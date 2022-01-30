@@ -1,4 +1,4 @@
-/* eslint  one-var: 0, import/no-extraneous-dependencies: 0, semi-style: 0,
+/* eslint one-var: 0, import/no-extraneous-dependencies: 0, semi-style: 0,
   object-curly-newline: 0 */
 
 
@@ -75,10 +75,10 @@ function doumdlib() {
   ;
 }
 
-// Create the ES6 Module.
-function does6lib() {
+// Creates the ES6 module.
+function domodule() {
   let exportM = '\n// -- Export\n';
-  exportM += `export default ${ES6GLOB}.${libname}`;
+  exportM += `export default ${ES6GLOB}.${libname};`;
 
   return src(`${destination}/${'generic'}.js`)
     .pipe(replace('{{lib:es6:define}}', `const ${ES6GLOB} = {};`))
@@ -98,7 +98,8 @@ function delgeneric(done) {
 
 // -- Gulp Public Task(s)
 module.exports = series(
-  clean, dogenericlib,
-  parallel(doumdlib, does6lib),
+  clean,
+  dogenericlib,
+  parallel(doumdlib, domodule),
   delgeneric,
 );
