@@ -147,7 +147,7 @@ SVG.noConflict();
 [npm-url]: https://www.npmjs.com/package/@mobilabs/svg
 [release-url]: https://github.com/jclo/svg/tags
 [commit-url]: https://github.com/jclo/svg/commits/master
-[travis-url]: https://travis-ci.com/jclo/svg
+[travis-url]: https://app.travis-ci.com/jclo/svg
 [coveralls-url]: https://coveralls.io/github/jclo/svg?branch=master
 [dependencies-url]: https://david-dm.org/jclo/svg
 [devdependencies-url]: https://david-dm.org/jclo/svg?type=dev
