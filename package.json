@@ -1,6 +1,6 @@
 {
   "name": "@mobilabs/svg",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A tiny Javascript library intended to create and manage SVG elements in the DOM",
   "main": "_dist/lib/svg.js",
   "minified": "_dist/lib/svg.min.js",

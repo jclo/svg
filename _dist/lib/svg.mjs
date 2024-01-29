@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * SVG v1.0.1
+ * SVG v1.0.2
  *
  * A tiny Javascript library intended to create and manage SVG elements in the DOM.
  * (you can download it from npm or github repositories)
@@ -132,7 +132,7 @@ const $__ES6GLOB = {};
       const { id, _root } = S.create(sel);
       obj._library = {
         name: 'SVG',
-        version: '1.0.1',
+        version: '1.0.2',
       };
       obj.id = id;
       obj._root = _root;
@@ -142,7 +142,7 @@ const $__ES6GLOB = {};
 
     // Attaches constants to SVG that provide name and version of the lib.
     SVG.NAME = 'SVG';
-    SVG.VERSION = '1.0.1';
+    SVG.VERSION = '1.0.2';
 
 
     // -- Private Static Methods -----------------------------------------------
