@@ -92,3 +92,5 @@ describe('Test SVG:', () => {
   // Test the animation:
   test5(SVG);
 });
+
+// - oOo --
